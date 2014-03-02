@@ -11,5 +11,3 @@ Tools: Lighttable, Floobits, Pixen
 
 
 Shout out to [UW GameDev Club](http://gamedev.cs.washington.edu/)!
-
-testing round 2
