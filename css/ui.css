@@ -1,0 +1,14 @@
+body {
+    position: relative;
+    background:#222;
+}
+
+#gameCanvas {
+    position: absolute;
+    background:white;
+    width:700px;
+    height:350px;
+    top: 50%;
+    left: 50%;
+    margin: -175px 0 0 -350px;
+}
