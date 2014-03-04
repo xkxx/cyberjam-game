@@ -39,13 +39,13 @@ Quintus.Isometric = function(Q) {
               }
             }
 
-            // rotate the player
-            // based on our velocity
-            if(p.vx > 0) {
-              p.angle = 0;
-            } else if(p.vx < 0) {
-              p.angle = 180;
-            }
+//             // rotate the player
+//             // based on our velocity
+//             if(p.vx > 0) {
+//               p.angle = 0;
+//             } else if(p.vx < 0) {
+//               p.angle = 90;
+//             }
 
             console.info(Q.inputs)
 
