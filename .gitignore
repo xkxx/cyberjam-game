@@ -5,3 +5,5 @@
 Session.vim
 .netrwhist
 .DS_STORE
+dist/*
+!dist/vue.min.js
