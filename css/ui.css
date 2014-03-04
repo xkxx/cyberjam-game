@@ -3,7 +3,7 @@ body {
     background:#222;
 }
 
-#gameCanvas {
+#gameCanvas_container {
     position: absolute;
     background:white;
     width:700px;
@@ -11,4 +11,5 @@ body {
     top: 50%;
     left: 50%;
     margin: -175px 0 0 -350px;
+
 }

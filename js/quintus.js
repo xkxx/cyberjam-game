@@ -1380,9 +1380,9 @@ var Quintus = function Quintus(opts) {
     if(elParent) {
       Q.wrapper = document.createElement("div");
       Q.wrapper.id = Q.el.id + '_container';
-      Q.wrapper.style.width = w + "px";
-      Q.wrapper.style.margin = "0 auto";
-      Q.wrapper.style.position = "relative";
+      // Q.wrapper.style.width = w + "px";
+      // Q.wrapper.style.margin = "0 auto";
+      // Q.wrapper.style.position = "relative";
 
 
       elParent.insertBefore(Q.wrapper,Q.el);
