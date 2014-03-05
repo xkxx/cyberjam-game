@@ -1,4 +1,4 @@
-Quintus.Isometric = function(Q) {
+exports.Isometric = function(Q) {
     var IsometricControls = {
         // default properties to add onto our entity
         defaults: { xspeed: 300, yspeed: 200, collsions: []},
