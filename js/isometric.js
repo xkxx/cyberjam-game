@@ -47,8 +47,6 @@ exports.Isometric = function(Q) {
 //               p.angle = 90;
 //             }
 
-            console.info(Q.inputs)
-
             p.direction = Q.inputs['left']  ? 'left' :
                           Q.inputs['right'] ? 'right' :
                           Q.inputs['up']    ? 'up' :

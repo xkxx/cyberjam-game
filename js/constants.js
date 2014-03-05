@@ -1,0 +1,7 @@
+exports.Constants = {
+    SPRITE_VIEWRANGE: 1,
+    SPRITE_PLAYER: 2,
+    SPRITE_NPC: 4,
+    SPRITE_BLOCKER: 8,
+    PLAYER_HEIGHT: 100
+};
