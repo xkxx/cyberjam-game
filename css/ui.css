@@ -3,13 +3,21 @@ body {
     background:#222;
 }
 
-#gameCanvas_container {
+#gameCanvas_container, .wrapper {
     position: absolute;
-    background:white;
     width:700px;
     height:350px;
     top: 50%;
     left: 50%;
     margin: -175px 0 0 -350px;
+}
 
+canvas {
+    background: white;
+}
+
+.wrapper {
+    text-align: center;
+    color: white;
+    background: black;
 }

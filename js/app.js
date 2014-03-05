@@ -34,7 +34,7 @@ Q.input.on("action", function() {
     }
 });
 
-Q.scene("testlevel", function(stage){
+Q.scene("testlevel", function(stage) {
     stage.insert(new Q.NPC(60, 260));
     var player = stage.insert(new Q.Player(0, 260));
 
@@ -46,7 +46,7 @@ Q.scene("testlevel", function(stage){
         y: 100,
         hidden: true
     }, function() {
-         //
+        dialogs.emit(Q.npcNearby+"-click");
     });
 
     stage.actionButton = actionButton;
@@ -55,6 +55,8 @@ Q.scene("testlevel", function(stage){
 
     stage.add("viewport").follow(player, {x: true, y: false});
 });
+
+
 
 Q.load(['player.png', 'npc.png', 'action.png'], function() {
     // Q.compileSheets("player.png", "player.json");

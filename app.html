@@ -23,6 +23,12 @@
   </head>
   <body>
       <canvas id="gameCanvas" width="700" height="350"></canvas>
+      <div class="wrapper" id="dialog-ui" v-show="show" v-on="click: dismiss">
+          <p v-text="content"></p>
+          <ul v-show="showChoices">
+              <li v-repeat="choices" v-text="value" v-on="click: selectChoice(this)"></li>
+          </ul>
+      </div>
       <script>
           require('js/app')
       </script>
