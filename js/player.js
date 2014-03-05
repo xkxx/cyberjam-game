@@ -6,12 +6,14 @@ exports.Player = function(Q) {
             p: {
                 x: 0,
                 y: 0,
-                cx: 0,
-                cy: 0,
+                cx: C.PLAYER_WIDTH/2,
+                cy: C.PLAYER_HEIGHT/2,
                 w: range,
-                h: C.PLAYER_HEIGHT
+                h: C.PLAYER_HEIGHT,
+                type: C.SPRITE_VIEWRANGE,
+                collisionMask: C.SPRITE_NPC
             },
-            grid: {}
+           // grid: {}
         };
         ViewRange.set = function(x, y) {
                 this.p.x = x;
@@ -33,10 +35,34 @@ exports.Player = function(Q) {
             });
 
             this.frontViewRange = new ViewRange(50);
-            this.backViewRange = new ViewRange(20);
+            this.backViewRange = new ViewRange(20); // FIXME: should by dynamic
 
             // setup view range sprites
             this.add("2d, isometricControls");
+       },
+       step: function(dt) {
+
+           this.frontViewRange.set(this.p.x + this.p.cx, this.p.y);
+           this.backViewRange.set(this.p.x - this.p.cx, this.p.y);
+
+           var npc = this.stage.search(this.frontViewRange);
+           npc = npc || this.stage.search(this.backViewRange);
+
+           if(npc) {
+              this.stage.actionButton.set({
+                  x: npc.obj.p.x,
+                  y: npc.obj.p.y - 80, // FIXME: hardcoded
+                  hidden: false
+              });
+              Q.npcNearby = npc.obj.p.name;
+           }
+
+           else {
+               this.stage.actionButton.hide();
+               Q.npcNearby = null;
+           }
+
+
        }
      });
 };
