@@ -7,13 +7,14 @@ var C = require('./constants').Constants,
 var Q = Quintus({ development: true, imagePath: "assets/"})
     .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
     .include([Isometric, Player, scenes])
-    .setup('gameCanvas', {height: 350, width: 700})
+    .setup('gameCanvas', {height: 200, width: 400})
     .controls(true)
     .touch();
 
-Q.ctx.imageSmoothingEnabled = false;
-Q.ctx.webkitImageSmoothingEnabled = false;
-Q.ctx.mozImageSmoothingEnabled = false;
+//When uncommented wierd artifacts appear in animation
+//Q.ctx.imageSmoothingEnabled = false;
+//Q.ctx.webkitImageSmoothingEnabled = false;
+//Q.ctx.mozImageSmoothingEnabled = false;
 
 Q.gravityY = 0;
 Q.gravityX = 0;
@@ -45,10 +46,10 @@ Q.load(['player.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     Q.sheet("player",
         "player.png",
         {
-            tilew: 10,
-            tileh: 17,
-            w: 120,
-            h:17
+            tilew: 28,
+            tileh: 64,
+            w: 336,
+            h:64
         });
 
     Q.stageScene("common-area");
