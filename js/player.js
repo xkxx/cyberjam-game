@@ -1,25 +1,24 @@
 var C = require('./constants').Constants;
 
 exports.Player = function(Q) {
-    var ViewRange = function(range) {
-        var ViewRange = {
+    var Vision = function(range) {
+        var Vision = {
             p: {
                 x: 0,
                 y: 0,
-                cx: C.PLAYER_WIDTH/2,
+                cx: range/2,
                 cy: C.PLAYER_HEIGHT/2,
                 w: range,
                 h: C.PLAYER_HEIGHT,
-                type: C.SPRITE_VIEWRANGE,
                 collisionMask: C.SPRITE_NPC
             },
            // grid: {}
         };
-        ViewRange.set = function(x, y) {
+        Vision.set = function(x, y) {
                 this.p.x = x;
                 this.p.y = y;
         };
-        return ViewRange;
+        return Vision;
     };
 
     Q.Sprite.extend("Player", {
@@ -34,32 +33,43 @@ exports.Player = function(Q) {
                 collisionMask: C.SPRITE_BLOCKER
             });
 
-            this.frontViewRange = new ViewRange(50);
-            this.backViewRange = new ViewRange(20); // FIXME: should by dynamic
+            this.frontVision = new Vision(50);
+            this.backVision = new Vision(20); // FIXME: should by dynamic
 
             // setup view range sprites
             this.add("2d, isometricControls");
        },
        step: function(dt) {
 
-           this.frontViewRange.set(this.p.x + this.p.cx, this.p.y);
-           this.backViewRange.set(this.p.x - this.p.cx, this.p.y);
+           if (this.p.direction == 'left') {
+               this.p.flip = 'x';
+               this.frontVision.set(this.p.x - this.p.cx, this.p.y);
+               this.backVision.set(this.p.x + this.p.cx, this.p.y);
+           }
+           else {
+               this.p.flip = '';
+               this.frontVision.set(this.p.x + this.p.cx, this.p.y);
+               this.backVision.set(this.p.x - this.p.cx, this.p.y);
+           }
 
-           var npc = this.stage.search(this.frontViewRange);
-           npc = npc || this.stage.search(this.backViewRange);
+           var nearby = this.stage.search(this.frontVision);
+           nearby = nearby || this.stage.search(this.backVision);
 
-           if(npc) {
+           Q.npcNearby = null;
+
+           if(nearby) {
               this.stage.actionButton.set({
-                  x: npc.obj.p.x,
-                  y: npc.obj.p.y - 80, // FIXME: hardcoded
+                  x: nearby.obj.p.x,
+                  y: nearby.obj.p.y - nearby.obj.p.cy - 40, // FIXME: hardcoded
                   hidden: false
               });
-              Q.npcNearby = npc.obj.p.name;
+              if (nearby.obj.p.type == C.SPRITE_NPC) {
+                  Q.npcNearby = nearby.obj.p.name;
+              }
            }
 
            else {
                this.stage.actionButton.hide();
-               Q.npcNearby = null;
            }
 
 

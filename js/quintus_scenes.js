@@ -586,7 +586,7 @@ Quintus.Scenes = function(Q) {
       // If the object doesn't have a grid, regrid it
       // so we know where to search
       // and skip adding it to the grid only if it's not on this stage
-      if(!obj.grid) { this.regrid(obj,obj.stage !== this); }
+      this.regrid(obj,obj.stage !== this);
 
       collisionMask = Q._isUndefined(collisionMask) ? (obj.p && obj.p.collisionMask) : collisionMask;
 

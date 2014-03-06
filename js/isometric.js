@@ -1,7 +1,7 @@
 exports.Isometric = function(Q) {
     var IsometricControls = {
         // default properties to add onto our entity
-        defaults: { xspeed: 300, yspeed: 200, collsions: []},
+        defaults: { xspeed: 300, yspeed: 200, collsions: [], direction: 'right'},
 
         // called when the component is added to
         // an entity
@@ -39,18 +39,8 @@ exports.Isometric = function(Q) {
               }
             }
 
-//             // rotate the player
-//             // based on our velocity
-//             if(p.vx > 0) {
-//               p.angle = 0;
-//             } else if(p.vx < 0) {
-//               p.angle = 90;
-//             }
-
             p.direction = Q.inputs['left']  ? 'left' :
-                          Q.inputs['right'] ? 'right' :
-                          Q.inputs['up']    ? 'up' :
-                          Q.inputs['down']  ? 'down' : p.direction;
+                          Q.inputs['right'] ? 'right' :  p.direction;
 
             if(Q.inputs['left']) {
                   if(collision) {
