@@ -20,14 +20,25 @@ exports.Player = function(Q) {
         };
         return Vision;
     };
+      
+    //PROBABLY SHOULD BE MOVED
+    Q.animations('player', {
+        walk_left: { frames: [0,1,2,3,4,5], rate: 1/5} ,
+        walk_right: { frames: [6,7,8,9,10,11], rate: 1/5},
+        stand_right: { frames: [6] },
+        stand_left: { frames: [0] } 
+    });
 
     Q.Sprite.extend("Player", {
         init: function(x, y) {
             this._super({
                 x: x,
                 y: y,
+                scale: C.PLAYER_SCALE,
                 z: C.SPRITE_PLAYER,
                 asset: "player.png", // placeholder
+                sheet: "player",
+                sprite: "player",
                 speed: 100,
                 type: C.SPRITE_PLAYER,
                 collisionMask: C.SPRITE_BLOCKER
@@ -38,19 +49,26 @@ exports.Player = function(Q) {
 
             // setup view range sprites
             this.add("2d, isometricControls");
+            this.add("animation");
        },
        step: function(dt) {
 
            if (this.p.direction == 'left') {
-               this.p.flip = 'x';
                this.frontVision.set(this.p.x - this.p.cx, this.p.y);
                this.backVision.set(this.p.x + this.p.cx, this.p.y);
-           }
-           else {
-               this.p.flip = '';
+           } else {
                this.frontVision.set(this.p.x + this.p.cx, this.p.y);
                this.backVision.set(this.p.x - this.p.cx, this.p.y);
            }
+
+           if (this.p.vx > 0) {
+               this.play("walk_right"); 
+           } else if (this.p.vx < 0) {
+               this.play("walk_left"); 
+           } else {
+               this.play("stand_" + (this.p.direction === 'right' ? "right" : "left"));
+           }
+
 
            var nearby = this.stage.search(this.frontVision);
            nearby = nearby || this.stage.search(this.backVision);
