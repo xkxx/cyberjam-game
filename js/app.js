@@ -44,10 +44,10 @@ Q.load(['player.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
         "player.png",
-        { 
-            tilew: 10, 
-            tileh: 17, 
-            w: 120, 
+        {
+            tilew: 10,
+            tileh: 17,
+            w: 120,
             h:17
         });
 
