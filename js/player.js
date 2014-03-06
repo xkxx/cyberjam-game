@@ -34,7 +34,7 @@ exports.Player = function(Q) {
             });
 
             this.frontVision = new Vision(50);
-            this.backVision = new Vision(20); // FIXME: should by dynamic
+            this.backVision = new Vision(20);
 
             // setup view range sprites
             this.add("2d, isometricControls");
@@ -60,7 +60,7 @@ exports.Player = function(Q) {
            if(nearby) {
               this.stage.actionButton.set({
                   x: nearby.obj.p.x,
-                  y: nearby.obj.p.y - nearby.obj.p.cy - 40, // FIXME: hardcoded
+                  y: nearby.obj.p.y - nearby.obj.p.cy - 40,
                   hidden: false
               });
               if (nearby.obj.p.type == C.SPRITE_NPC) {
