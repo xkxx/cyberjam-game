@@ -46,10 +46,10 @@ Q.load(['player.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     Q.sheet("player",
         "player.png",
         {
-            tilew: 28,
-            tileh: 64,
-            w: 336,
-            h:64
+            tilew: 56,
+            tileh: 128,
+            w: 672,
+            h: 128
         });
 
     Q.stageScene("common-area");
