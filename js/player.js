@@ -10,7 +10,7 @@ exports.Player = function(Q) {
                 cy: C.PLAYER_HEIGHT/2,
                 w: range,
                 h: C.PLAYER_HEIGHT,
-                collisionMask: C.SPRITE_NPC
+                collisionMask: C.SPRITE_NP
             },
            // grid: {}
         };
@@ -35,7 +35,7 @@ exports.Player = function(Q) {
                 x: x,
                 y: y,
                 scale: C.PLAYER_SCALE,
-                z: C.SPRITE_PLAYER,
+                z: y
                 sheet: "player",
                 sprite: "player",
                 speed: 10,
@@ -51,6 +51,8 @@ exports.Player = function(Q) {
             this.add("animation");
        },
        step: function(dt) {
+
+           this.p.z = this.p.y;
 
            if (this.p.direction == 'left') {
                this.frontVision.set(this.p.x - this.p.cx, this.p.y);
@@ -72,24 +74,18 @@ exports.Player = function(Q) {
            var nearby = this.stage.search(this.frontVision);
            nearby = nearby || this.stage.search(this.backVision);
 
-           Q.npcNearby = null;
-
            if(nearby) {
               this.stage.actionButton.set({
                   x: nearby.obj.p.x,
                   y: nearby.obj.p.y - nearby.obj.p.cy - 40,
                   hidden: false
               });
-              if (nearby.obj.p.type == C.SPRITE_NPC) {
-                  Q.npcNearby = nearby.obj.p.name;
-              }
+              Q.npcNearby = nearby.obj;
            }
 
            else {
                this.stage.actionButton.hide();
            }
-
-
        }
      });
 };
