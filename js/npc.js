@@ -1,4 +1,5 @@
-var dialogs = require('./dialogs').dialogs;
+var C = require('./constants').Constants,
+    dialogs = require('./dialogs').dialogs;
 
 exports.NPC = function(Q) {
     Q.Sprite.extend("NPC", {

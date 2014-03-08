@@ -1,3 +1,5 @@
+var C = require('./constants').Constants;
+
 exports.Portal = function(Q) {
     Q.Sprite.extend("Portal", {
         init: function(x, y, image, dst) {
@@ -5,7 +7,7 @@ exports.Portal = function(Q) {
                 x: x,
                 y: y,
                 asset: image,
-                type: SPRITE_NP
+                type: C.SPRITE_NP
             })
         },            
         click: function() {
