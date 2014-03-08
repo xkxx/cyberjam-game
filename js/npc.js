@@ -7,7 +7,7 @@ exports.NPC = function(Q) {
             this._super({
                 x: x,
                 y: y,
-                z: y,
+                z: y, //y + height
                 type: C.SPRITE_NP,
                 collisionMask: C.SPRITE_BLOCKER,
                 asset: "npc.png",

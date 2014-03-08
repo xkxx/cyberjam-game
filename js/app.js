@@ -2,14 +2,12 @@ var C = require('./constants').Constants,
     dialogs = require('./dialogs').dialogs,
     Isometric = require('./isometric').Isometric,
     Player = require('./player').Player,
-    NPC = require('./npc').NPC,
-    Portal = require('./portal').Portal,
     scenes = require('./scenes').scenes;
 
 var Q = Quintus({ development: true, imagePath: "assets/"})
     .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
-    .include([Isometric, Player, NPC, Portal, scenes])
-    .setup('gameCanvas')
+    .include([Isometric, Player, scenes])
+    .setup('gameCanvas', {height: 200, width: 400})
     .controls(true)
     .touch();
 
@@ -21,13 +19,44 @@ var Q = Quintus({ development: true, imagePath: "assets/"})
 Q.gravityY = 0;
 Q.gravityX = 0;
 
+Q.Sprite.extend("NPC", {
+    init: function(x, y) {
+        this._super({
+            x: x,
+            y: y,
+            z: C.SPRITE_NPC,
+            type: C.SPRITE_NPC,
+            collisionMask: C.SPRITE_BLOCKER,
+            asset: "npc.png",
+            name: "Chell"
+        });
+    }
+
+});
+
+//the overlay entrance the char walks beneath
+Q.Sprite.extend("Entrance", {
+    init: function(x, y) {
+        this._super({
+            x: x,
+            y: y,
+            z: y + 116, //y + height
+            w: 112,
+            h: 232,
+            asset: "wall-entrance.png",
+            name: "wall-entrance"
+        });
+    },
+});
+
+
 Q.input.on("action", function() {
     if(Q.npcNearby) {
         dialogs.emit(Q.npcNearby+"-click");
     }
 });
 
-Q.load(['player.png', 'main-scene.png', 'npc.png', 'action.png', 'ladder.png'], function() {
+Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",

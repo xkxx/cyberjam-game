@@ -35,6 +35,13 @@ exports.scenes = function(Q) {
             type: C.SPRITE_BLOCKER
         }));
 
+        var entrance_1 = new Q.Entrance(100 , 116);
+        var entrance_2 = new Q.Entrance(0, 116);
+
+        stage.insert(entrance_1);
+        stage.insert(entrance_2);
+
+
         // prevent player from getting ahead of the camera
         stage.insert(new Q.Sprite({
             x: 0,
