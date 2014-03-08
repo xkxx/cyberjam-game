@@ -82,11 +82,15 @@ exports.Player = function(Q) {
                   hidden: false
               });
               Q.npcNearby = nearby.obj;
+           } else {
+//               this.stage.actionButton.hide();
            }
 
-           else {
-               this.stage.actionButton.hide();
-           }
+           var x = Math.max( -this.stage.width / 2 + C.VIEW_WIDTH / 2, this.p.x);
+           x = Math.min(this.stage.width / 2 - C.VIEW_WIDTH / 2, x);
+           var y = Math.max(this.stage.height / 2)
+
+           this.stage.viewport.centerOn(x,y);
        }
      });
 };

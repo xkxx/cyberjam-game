@@ -2,9 +2,99 @@ var C = require('./constants').Constants;
 
 exports.scenes = function(Q) {
     Q.scene("opening", function(stage) {
-
+        var player = stage.insert(new Q.Player(0, 0));
 
     });
+
+//  Scene prototype    
+//  Q.scene("commons", function(stage) {
+//      // bg
+//      stage.insert(new Q.Sprite({ //(x,y) is the center of the sprite
+//          x: 0, 
+//          y: 116,
+//          h: 232,
+//          w: ,
+//          asset: '',
+//          type: 0 // !!important! You MUST specify Sprite type
+//      }));
+
+//      // back wall
+//      stage.insert(new Q.Sprite({
+//          x: 0,
+//          y: 32,
+//          h: 1,
+//          w: 4536, 
+//          type: C.SPRITE_BLOCKER
+//      }));
+
+//      // front wall
+//      stage.insert(new Q.Sprite({
+//          x: 0,
+//          y: 200,
+//          h: 1,
+//          w: 4536,
+//          type: C.SPRITE_BLOCKER
+//      }));
+
+//      var player = stage.insert(new Q.Player(0, 0));
+//  });
+
+
+    Q.scene("commons", function(stage) {
+        // bg
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 116,
+            h: 232,
+            w: 1832,
+            asset: 'commons-scene.png',
+            type: 0 // !!important! You MUST specify Sprite type
+        }));
+
+        // back wall
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 32,
+            h: 1,
+            w: 1832, 
+            type: C.SPRITE_BLOCKER
+        }));
+
+        // front wall
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 200,
+            h: 1,
+            w: 1832,
+            type: C.SPRITE_BLOCKER
+        }));
+
+        var player = stage.insert(new Q.Player(0, 116));
+        stage.width = 1832;
+        stage.height = 232;
+        stage.add("viewport");
+    });
+
+    Q.scene("sleeping", function(stage) {
+        var player = stage.insert(new Q.Player(0, 0));
+    });
+
+    Q.scene("pod", function(stage) {
+        var player = stage.insert(new Q.Player(0, 0));
+    });
+
+    Q.scene("kitchen", function(stage) {
+        var player = stage.insert(new Q.Player(0, 0));
+    });
+
+    Q.scene("closet", function(stage) {
+        var player = stage.insert(new Q.Player(0, 0));
+    });
+
+    Q.scene("closing", function(stage) {
+        var player = stage.insert(new Q.Player(0, 0));
+    });
+
 
     Q.scene("common-area", function(stage) {
 

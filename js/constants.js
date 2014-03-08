@@ -9,5 +9,7 @@ exports.Constants = {
     // width of player
     PLAYER_WIDTH: 64,
     // scale of the player
-    PLAYER_SCALE: 1
+    PLAYER_SCALE: 1,
+    VIEW_WIDTH: 700,
+    VIEW_HEIGHT: 232
 };
