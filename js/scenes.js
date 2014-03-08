@@ -9,20 +9,20 @@ exports.scenes = function(Q) {
     Q.scene("common-area", function(stage) {
         stage.insert(new Q.NPC(60, 260));
 
-     // stage.insert(new Q.Sprite({
-     //     x: 0,
-     //     y: 0,
-     //     h: 232,
-     //     w: 4536,
-     //     asset: 'main-scene.png'
-     // }));
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 116,
+            h: 232,
+            w: 4536,
+            asset: 'main-scene.png'
+        }));
 
         // back wall
         stage.insert(new Q.Sprite({
             x: 0,
-            y: 40,
+            y: 32,
             h: 1,
-            w: 1000,
+            w: 4536,
             type: C.SPRITE_BLOCKER
         }));
 
@@ -43,7 +43,7 @@ exports.scenes = function(Q) {
 
         }));
 
-          var player = stage.insert(new Q.Player(0, 260));
+          var player = stage.insert(new Q.Player(0, 128));
 
         var actionButton = new Q.UI.Button({
             asset: 'action.png',

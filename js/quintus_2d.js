@@ -42,7 +42,7 @@ Quintus["2D"] = function(Q) {
       var followX = Q._isFunction(this.directions.x) ? this.directions.x(this.following) : this.directions.x;
       var followY = Q._isFunction(this.directions.y) ? this.directions.y(this.following) : this.directions.y;
 
-      this[first === true ? 'centerOn' : 'softCenterOn'](
+      this['centerOn'](
                     followX ? 
                       this.following.p.x + this.following.p.w/2 - this.offsetX :
                       undefined,

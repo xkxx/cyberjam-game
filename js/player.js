@@ -23,10 +23,8 @@ exports.Player = function(Q) {
       
     //PROBABLY SHOULD BE MOVED
     Q.animations('player', {
-        walk_left: { frames: [0,1,2], rate: 1/5},
-        walk_right: { frames: [0,1,2], rate: 1/5},
-        stand_right: { frames: [0] },
-        stand_left: { frames: [0] }
+        walk: { frames: [0,1,2], rate: 1/5},
+        stand: { frames: [0] }
     });
 
     Q.Sprite.extend("Player", {
@@ -38,7 +36,7 @@ exports.Player = function(Q) {
                 z: C.SPRITE_PLAYER,
                 sheet: "player",
                 sprite: "player",
-                speed: 100,
+                speed: 1000,
                 type: C.SPRITE_PLAYER,
                 collisionMask: C.SPRITE_BLOCKER
             });
@@ -60,15 +58,18 @@ exports.Player = function(Q) {
                this.frontVision.set(this.p.x + this.p.cx, this.p.y);
                this.backVision.set(this.p.x - this.p.cx, this.p.y);
            }
-           this.play("walk_right");
 
-//         if (this.p.vx > 0) {
-//             this.play("walk_right");
-//         } else if (this.p.vx < 0) {
-//             this.play("walk_left");
-//         } else {
-//              this.play("stand_" + this.p.direction > 0 ? "right" : "left");
-//         }
+           if (this.p.vx < 0) {
+               this.p.flip = "x";
+           } else if (this.p.vx > 0) {
+               this.p.flip = "";
+           } 
+
+           if (this.p.vx != 0 || this.p.vy != 0) {
+               this.play("walk");
+           } else {
+               this.play("stand");
+           }
 
 
            var nearby = this.stage.search(this.frontVision);

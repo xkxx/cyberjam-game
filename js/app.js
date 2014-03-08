@@ -40,7 +40,7 @@ Q.input.on("action", function() {
     }
 });
 
-Q.load(['player.png', 'npc.png', 'action.png', 'ladder.png'], function() {
+Q.load(['player.png', 'main-scene.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
