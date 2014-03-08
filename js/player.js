@@ -33,7 +33,7 @@ exports.Player = function(Q) {
                 x: x,
                 y: y,
                 scale: C.PLAYER_SCALE,
-                z: y,
+                z: y + C.PLAYER_HEIGHT,
                 sheet: "player",
                 sprite: "player",
                 speed: 100,
@@ -50,13 +50,12 @@ exports.Player = function(Q) {
        },
        step: function(dt) {
 
-           this.p.z = this.p.y;
+           this.p.z = this.p.y + C.PLAYER_HEIGHT;
 
            if (this.p.direction == 'left') {
                this.frontVision.set(this.p.x - this.p.cx, this.p.y);
                this.backVision.set(this.p.x + this.p.cx, this.p.y);
-           }
-           else {
+           } else {
                this.frontVision.set(this.p.x + this.p.cx, this.p.y);
                this.backVision.set(this.p.x - this.p.cx, this.p.y);
            }
@@ -72,7 +71,6 @@ exports.Player = function(Q) {
            } else {
                this.play("stand");
            }
-
 
            var nearby = this.stage.search(this.frontVision);
            nearby = nearby || this.stage.search(this.backVision);

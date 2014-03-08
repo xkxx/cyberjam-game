@@ -35,11 +35,23 @@ exports.scenes = function(Q) {
             type: C.SPRITE_BLOCKER
         }));
 
+        var entrance_1 = new Q.Entrance(-1900, 116);
+        var entrance_2 = new Q.Entrance(-204, 116);
+        var entrance_3 = new Q.Entrance(516, 116);
+
+        // prevent player from getting ahead of the camera
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 345,
+            h: 1,
+            w: 1000,
+            type: C.SPRITE_BLOCKER
+        }));
 
         stage.insert(new Q.NPC("Chell", 60, 130));
         stage.insert(new Q.Portal(-150, 100, 'ladder.png', null));
 
-        var player = stage.insert(new Q.Player(0, 128));
+          var player = stage.insert(new Q.Player(516, 128));
 
         var actionButton = new Q.UI.Button({
             asset: 'action.png',
@@ -51,6 +63,10 @@ exports.scenes = function(Q) {
         });
         stage.actionButton = actionButton;
         stage.insert(actionButton);
+
+        stage.insert(entrance_1);
+        stage.insert(entrance_2);
+        stage.insert(entrance_3);
 
         stage.add("viewport").follow(player, {x: true, y: false});
     });

@@ -23,13 +23,29 @@ window.Q = Q;
 Q.gravityY = 0;
 Q.gravityX = 0;
 
+//the overlay entrance the char walks beneath
+Q.Sprite.extend("Entrance", {
+    init: function(x, y) {
+        this._super({
+            x: x,
+            y: y,
+            z: y + 116, //y + height
+            w: 112,
+            h: 232,
+            asset: "wall-entrance.png",
+            name: "wall-entrance"
+        });
+    },
+});
+
+
 Q.input.on("action", function() {
     if(Q.npcNearby) {
         Q.npcNearby.click();
     }
 });
 
-Q.load(['player.png', 'main-scene.png', 'npc.png', 'action.png', 'ladder.png'], function() {
+Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
