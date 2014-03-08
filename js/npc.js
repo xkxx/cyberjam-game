@@ -19,6 +19,4 @@ exports.NPC = function(Q) {
         }
     });
     
-    
-    
 }

@@ -7,7 +7,7 @@ exports.scenes = function(Q) {
     });
 
     Q.scene("common-area", function(stage) {
-        stage.insert(new Q.NPC(60, 260));
+        stage.insert(new Q.NPC("Chell", 60, 260));
 
      // stage.insert(new Q.Sprite({
      //     x: 0,
