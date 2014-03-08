@@ -35,12 +35,8 @@ exports.scenes = function(Q) {
             type: C.SPRITE_BLOCKER
         }));
 
-        var entrance_1 = new Q.Entrance(100 , 116);
+        var entrance_1 = new Q.Entrance(-1900, 116);
         var entrance_2 = new Q.Entrance(0, 116);
-
-        stage.insert(entrance_1);
-        stage.insert(entrance_2);
-
 
         // prevent player from getting ahead of the camera
         stage.insert(new Q.Sprite({
@@ -59,7 +55,7 @@ exports.scenes = function(Q) {
 
         }));
 
-          var player = stage.insert(new Q.Player(0, 128));
+          var player = stage.insert(new Q.Player(-1900, 128));
 
         var actionButton = new Q.UI.Button({
             asset: 'action.png',
@@ -71,6 +67,9 @@ exports.scenes = function(Q) {
         });
         stage.actionButton = actionButton;
         stage.insert(actionButton);
+
+        stage.insert(entrance_1);
+        stage.insert(entrance_2);
 
         stage.add("viewport").follow(player, {x: true, y: false});
     });
