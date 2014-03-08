@@ -37,7 +37,6 @@ gulp.task('copy-assets', function() {
        .pipe(gulp.dest('dist/assets/'));
 });
 
-
 gulp.task('htmlreplace', function() {
     return gulp.src('app.html')
         .pipe(htmlreplace({
