@@ -8,12 +8,12 @@ exports.Portal = function(Q) {
                 y: y,
                 asset: image,
                 type: C.SPRITE_NP
-            })
-        },            
+            });
+        },
         click: function() {
-            
+
         }
-            
+
     });
-        
+
 };

@@ -19,6 +19,9 @@ var DialogNode = {
 
 
 var DialogTree = function(list) {
+    EventEmitter.call(this);
+    var self = this;
+
     var process = function(list, parent) {
         if (!list) {
             return;
@@ -26,27 +29,22 @@ var DialogTree = function(list) {
 
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
-            if (!item instanceof DialogNode) {
+            if (item.prototype !== DialogNode) {
                 // we assume the chil nodes have been processed
                 // if the parent node has.
                 item.prototype = DialogNode;
                 item.parent = list;
                 if (item.trigger) {
-                    this.on(item.trigger, this.triggerDialog.bind(this, item));
+                    EventEmitter.prototype.on.call(self, item.trigger, self.triggerDialog.bind(self, item));
                 }
                 process(item.responses, item);
             }
         }
     };
 
-    EventEmitter.prototype.constructor.call(this);
-
     process(list, this);
     this.list = list;
     this.currentDialog = null;
-
-    var dialogTree = this;
-
 
     this.ui = new Vue({
         el: "#dialog-ui",
@@ -59,22 +57,27 @@ var DialogTree = function(list) {
         },
         methods: {
             selectChoice: function(choice) {
+                choice.stopPropagation();
+                choice = choice.target.innerText;
                 this.choices.remove();
-                dialogTree.currentDialog.forEach(function(item) {
+                self.currentDialog.responses.forEach(function(item) {
                     if (item.triggerText == choice) {
-                        dialogTree.triggerDialog(item);
+                        self.triggerDialog(item);
                     }
                 });
             },
             dismiss: function() {
-                this.showDialog = false;
-                dialogTree.currentDialog = null;
+                if(!this.showChoices) {
+                    this.showDialog = false;
+                    self.currentDialog = null;
+                }
             }
         }
     });
 };
 
-DialogTree.prototype = new EventEmitter();
+DialogTree.prototype = Object.create(EventEmitter.prototype);
+DialogTree.prototype.constructor = DialogTree;
 
 DialogTree.prototype.remove = function(item) {
      if (this.responses) {
@@ -86,6 +89,7 @@ DialogTree.prototype.remove = function(item) {
 };
 
 DialogTree.prototype.triggerDialog = function(item) {
+    console.info('tregger dialog')
     if(item.ontrigger) {
         item.ontrigger();
     }
@@ -96,9 +100,9 @@ DialogTree.prototype.triggerDialog = function(item) {
         this.ui.content = item.message;
 
         if(item.responses) {
-            item.responses.forEach(function(choice) {
-                this.ui.choices.push(choice.triggerText);
-            });
+            for (var i = 0; i < item.responses.length; i++) {
+                this.ui.choices.push(item.responses[i].triggerText);
+            }
             this.ui.showChoices = true;
         }
         else {

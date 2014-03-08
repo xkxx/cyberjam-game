@@ -17,7 +17,7 @@
     // the dialog content to be displayed
     // Will display in multiple "slides" if is multiline
     // Won't display anything if empty
-    content: "",
+    message: "",
     // signal to trigger when the dialog is active
     emit: "",
     // function to execute when the dialog is active.
@@ -35,11 +35,11 @@ var NPC1 = {
     responses: [
         {
             triggerText: "Nothing. Bye",
-            content: "Bye!"
+            message: "Bye!"
         },
         {
             triggerText: "Lend me 10 bucks",
-            content: "Not again..."
+            message: "Not again..."
             ontrigger: function(dialog) {
                 dialog.remove(); // removes dialog forever
             }
@@ -53,6 +53,19 @@ var DialogTree = require('./dialog-impl').DialogTree;
 
 // your dialogs here...
 
-dialogs = [];
+dialogs = [{
+    trigger: "Chell-click",
+    message: "Hello World",
+    responses: [
+        {
+            triggerText: "Option 1",
+            message: "Response 1"
+        },
+        {
+            triggerText: "Option 2",
+            message: "Response 2"
+        }
+    ]
+}];
 
 exports.dialogs = new DialogTree(dialogs);

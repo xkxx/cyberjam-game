@@ -23,10 +23,10 @@
   </head>
   <body>
       <canvas id="gameCanvas" width="700" height="232"></canvas>
-      <div class="wrapper" id="dialog-ui" v-show="show" v-on="click: dismiss">
-          <p v-text="content"></p>
+      <div class="wrapper" id="dialog-ui" v-show="showDialog">
+          <p v-text="content" v-on="click: dismiss"></p>
           <ul v-show="showChoices">
-              <li v-repeat="choices" v-text="value" v-on="click: selectChoice(this)"></li>
+              <li v-repeat="choices" v-text="$value" v-on="click: selectChoice"></li>
           </ul>
       </div>
       <script>

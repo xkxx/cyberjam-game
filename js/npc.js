@@ -18,5 +18,5 @@ exports.NPC = function(Q) {
             dialogs.emit(this.p.name + '-click');
         }
     });
-    
+
 }

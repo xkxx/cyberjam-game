@@ -13,6 +13,8 @@ var Q = Quintus({ development: true, imagePath: "assets/"})
     .controls(true)
     .touch();
 
+window.Q = Q;
+
 //When uncommented wierd artifacts appear in animation
 //Q.ctx.imageSmoothingEnabled = false;
 //Q.ctx.webkitImageSmoothingEnabled = false;
@@ -23,7 +25,7 @@ Q.gravityX = 0;
 
 Q.input.on("action", function() {
     if(Q.npcNearby) {
-        dialogs.emit(Q.npcNearby+"-click");
+        Q.npcNearby.click();
     }
 });
 

@@ -20,7 +20,7 @@ exports.Player = function(Q) {
         };
         return Vision;
     };
-      
+
     //PROBABLY SHOULD BE MOVED
     Q.animations('player', {
         walk: { frames: [0,1,2], rate: 1/5},
@@ -36,7 +36,7 @@ exports.Player = function(Q) {
                 z: y,
                 sheet: "player",
                 sprite: "player",
-                speed: 1000,
+                speed: 100,
                 type: C.SPRITE_PLAYER,
                 collisionMask: C.SPRITE_BLOCKER
             });
@@ -65,7 +65,7 @@ exports.Player = function(Q) {
                this.p.flip = "x";
            } else if (this.p.vx > 0) {
                this.p.flip = "";
-           } 
+           }
 
            if (this.p.vx != 0 || this.p.vy != 0) {
                this.play("walk");

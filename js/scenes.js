@@ -7,14 +7,14 @@ exports.scenes = function(Q) {
     });
 
     Q.scene("common-area", function(stage) {
-        stage.insert(new Q.NPC(60, 260));
 
         stage.insert(new Q.Sprite({
             x: 0,
             y: 116,
             h: 232,
             w: 4536,
-            asset: 'main-scene.png'
+            asset: 'main-scene.png',
+            type: 0 // !!important! You MUST specify Sprite type
         }));
 
         // back wall
@@ -35,24 +35,11 @@ exports.scenes = function(Q) {
             type: C.SPRITE_BLOCKER
         }));
 
-        // prevent player from getting ahead of the camera
-        stage.insert(new Q.Sprite({
-            x: 0,
-            y: 345,
-            h: 1,
-            w: 1000,
-            type: C.SPRITE_BLOCKER
-        }));
 
-        stage.insert(new Q.Sprite({
-            x: -200,
-            y: 200,
-            asset: 'ladder.png',
-            type: C.SPRITE_NPC
+        stage.insert(new Q.NPC("Chell", 60, 130));
+        stage.insert(new Q.Portal(-150, 100, 'ladder.png', null));
 
-        }));
-
-          var player = stage.insert(new Q.Player(0, 128));
+        var player = stage.insert(new Q.Player(0, 128));
 
         var actionButton = new Q.UI.Button({
             asset: 'action.png',
@@ -60,7 +47,7 @@ exports.scenes = function(Q) {
             y: 100,
             hidden: true
         }, function() {
-            dialogs.emit(Q.npcNearby+"-click");
+            Q.npcNearby.click();
         });
         stage.actionButton = actionButton;
         stage.insert(actionButton);
