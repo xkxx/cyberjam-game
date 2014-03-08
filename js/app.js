@@ -2,12 +2,14 @@ var C = require('./constants').Constants,
     dialogs = require('./dialogs').dialogs,
     Isometric = require('./isometric').Isometric,
     Player = require('./player').Player,
+    NPC = require('./npc').NPC,
+    Portal = require('./portal').Portal,
     scenes = require('./scenes').scenes;
 
 var Q = Quintus({ development: true, imagePath: "assets/"})
     .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
-    .include([Isometric, Player, scenes])
-    .setup('gameCanvas', {height: 200, width: 400})
+    .include([Isometric, Player, NPC, Portal, scenes])
+    .setup('gameCanvas')
     .controls(true)
     .touch();
 
@@ -18,21 +20,6 @@ var Q = Quintus({ development: true, imagePath: "assets/"})
 
 Q.gravityY = 0;
 Q.gravityX = 0;
-
-Q.Sprite.extend("NPC", {
-    init: function(x, y) {
-        this._super({
-            x: x,
-            y: y,
-            z: C.SPRITE_NPC,
-            type: C.SPRITE_NPC,
-            collisionMask: C.SPRITE_BLOCKER,
-            asset: "npc.png",
-            name: "Chell"
-        });
-    }
-
-});
 
 Q.input.on("action", function() {
     if(Q.npcNearby) {

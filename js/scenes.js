@@ -7,7 +7,7 @@ exports.scenes = function(Q) {
     });
 
     Q.scene("common-area", function(stage) {
-        stage.insert(new Q.NPC(60, 260));
+        stage.insert(new Q.NPC("Chell", 60, 260));
 
         stage.insert(new Q.Sprite({
             x: 0,
@@ -39,7 +39,7 @@ exports.scenes = function(Q) {
             x: -200,
             y: 200,
             asset: 'ladder.png',
-            type: C.SPRITE_NPC
+            type: C.SPRITE_NP
 
         }));
 
@@ -51,7 +51,7 @@ exports.scenes = function(Q) {
             y: 100,
             hidden: true
         }, function() {
-            dialogs.emit(Q.npcNearby+"-click");
+            Q.npcNearby.click();
         });
         stage.actionButton = actionButton;
         stage.insert(actionButton);
