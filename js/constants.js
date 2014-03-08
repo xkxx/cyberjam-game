@@ -7,7 +7,7 @@ exports.Constants = {
     // height of player
     PLAYER_HEIGHT: 128,
     // width of player
-    PLAYER_WIDTH: 56,
+    PLAYER_WIDTH: 64,
     // scale of the player
     PLAYER_SCALE: 1
 };

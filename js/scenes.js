@@ -9,6 +9,14 @@ exports.scenes = function(Q) {
     Q.scene("common-area", function(stage) {
         stage.insert(new Q.NPC(60, 260));
 
+     // stage.insert(new Q.Sprite({
+     //     x: 0,
+     //     y: 0,
+     //     h: 232,
+     //     w: 4536,
+     //     asset: 'main-scene.png'
+     // }));
+
         // back wall
         stage.insert(new Q.Sprite({
             x: 0,
@@ -35,7 +43,7 @@ exports.scenes = function(Q) {
 
         }));
 
-        var player = stage.insert(new Q.Player(0, 260));
+          var player = stage.insert(new Q.Player(0, 260));
 
         var actionButton = new Q.UI.Button({
             asset: 'action.png',

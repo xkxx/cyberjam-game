@@ -20,12 +20,12 @@ exports.Player = function(Q) {
         };
         return Vision;
     };
-
+      
     //PROBABLY SHOULD BE MOVED
     Q.animations('player', {
-        walk_left: { frames: [0,1,2,3,4,5], rate: 1/5} ,
-        walk_right: { frames: [6,7,8,9,10,11], rate: 1/5},
-        stand_right: { frames: [6] },
+        walk_left: { frames: [0,1,2], rate: 1/5},
+        walk_right: { frames: [0,1,2], rate: 1/5},
+        stand_right: { frames: [0] },
         stand_left: { frames: [0] }
     });
 
@@ -35,10 +35,10 @@ exports.Player = function(Q) {
                 x: x,
                 y: y,
                 scale: C.PLAYER_SCALE,
-                z: y
+                z: y,
                 sheet: "player",
                 sprite: "player",
-                speed: 10,
+                speed: 100,
                 type: C.SPRITE_PLAYER,
                 collisionMask: C.SPRITE_BLOCKER
             });
@@ -57,18 +57,20 @@ exports.Player = function(Q) {
            if (this.p.direction == 'left') {
                this.frontVision.set(this.p.x - this.p.cx, this.p.y);
                this.backVision.set(this.p.x + this.p.cx, this.p.y);
-           } else {
+           }
+           else {
                this.frontVision.set(this.p.x + this.p.cx, this.p.y);
                this.backVision.set(this.p.x - this.p.cx, this.p.y);
            }
+           this.play("walk_right");
 
-           if (this.p.vx > 0) {
-               this.play("walk_right");
-           } else if (this.p.vx < 0) {
-               this.play("walk_left");
-           } else {
-               this.play("stand_" + (this.p.direction === 'right' ? "right" : "left"));
-           }
+//         if (this.p.vx > 0) {
+//             this.play("walk_right");
+//         } else if (this.p.vx < 0) {
+//             this.play("walk_left");
+//         } else {
+//              this.play("stand_" + this.p.direction > 0 ? "right" : "left");
+//         }
 
 
            var nearby = this.stage.search(this.frontVision);

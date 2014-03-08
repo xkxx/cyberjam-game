@@ -33,9 +33,9 @@ Q.load(['player.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     Q.sheet("player",
         "player.png",
         {
-            tilew: 56,
+            tilew: 64,
             tileh: 128,
-            w: 672,
+            w: 192,
             h: 128
         });
 
