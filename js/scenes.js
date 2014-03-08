@@ -7,7 +7,7 @@ exports.scenes = function(Q) {
     });
 
     Q.scene("common-area", function(stage) {
-        stage.insert(new Q.NPC("Chell", 60, 260));
+        stage.insert(new Q.NPC(60, 260));
 
         stage.insert(new Q.Sprite({
             x: 0,
@@ -26,6 +26,15 @@ exports.scenes = function(Q) {
             type: C.SPRITE_BLOCKER
         }));
 
+        // front wall
+        stage.insert(new Q.Sprite({
+            x: 0,
+            y: 200,
+            h: 1,
+            w: 4536,
+            type: C.SPRITE_BLOCKER
+        }));
+
         // prevent player from getting ahead of the camera
         stage.insert(new Q.Sprite({
             x: 0,
@@ -39,7 +48,7 @@ exports.scenes = function(Q) {
             x: -200,
             y: 200,
             asset: 'ladder.png',
-            type: C.SPRITE_NP
+            type: C.SPRITE_NPC
 
         }));
 
@@ -51,7 +60,7 @@ exports.scenes = function(Q) {
             y: 100,
             hidden: true
         }, function() {
-            Q.npcNearby.click();
+            dialogs.emit(Q.npcNearby+"-click");
         });
         stage.actionButton = actionButton;
         stage.insert(actionButton);
