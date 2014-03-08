@@ -3,8 +3,7 @@ exports.Constants = {
     SPRITE_PLAYER: 2,
     SPRITE_NPC: 4,
     SPRITE_BLOCKER: 8,
-    SPRITE_BG: 8,
     PLAYER_HEIGHT: 128,
-    PLAYER_WIDTH: 56,
+    PLAYER_WIDTH: 64,
     PLAYER_SCALE: 1
 };
