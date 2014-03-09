@@ -111,6 +111,13 @@ var dialogs = [
             Q.stage().stop();
             Q.stage(0).start();
         }
+    },
+    {
+        trigger: "goto-pods",
+        ontrigger: function() {
+            Q.stage().stop();
+            Q.stage(2).start();
+        }
     }
 ];
 
