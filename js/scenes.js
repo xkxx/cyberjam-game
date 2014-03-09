@@ -117,7 +117,7 @@ exports.scenes = function(Q) {
           stage.width = 700;
           stage.height = 232;
           stage.add("viewport");
-  
+
           var actionButton = new Q.UI.Button({
               asset: 'action.png',
               x: 0,
@@ -173,9 +173,13 @@ exports.scenes = function(Q) {
               h: 232, 
               asset: "wall-entrance-flip.png",
           });
-  
+
+          var portal_left = new Q.Portal(-stage.width / 2);
+          var portal_right = new Q.Portal(stage.width / 2);
           var player = new Q.Player(0, 116);
   
+          stage.insert(portal_left);
+          stage.insert(portal_right);
           stage.insert(actionButton);
           stage.insert(bg);
           stage.insert(back_wall);
