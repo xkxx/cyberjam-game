@@ -509,7 +509,6 @@ Quintus.Scenes = function(Q) {
     */
     pause: function() {
       this.paused = true;
-      return this;
     },
 
     /**
@@ -520,7 +519,6 @@ Quintus.Scenes = function(Q) {
     */
     unpause: function() {
       this.paused = false;
-      return this;
     },
 
     _gridCellCheck: function(type,id,obj,collisionMask) {
@@ -855,6 +853,7 @@ Quintus.Scenes = function(Q) {
     stop: function() {
       this.hide();
       this.pause();
+      return this;
     },
 
     /**
@@ -866,6 +865,7 @@ Quintus.Scenes = function(Q) {
     start: function() {
       this.show();
       this.unpause();
+      return this;
     },
 
     render: function(ctx) {

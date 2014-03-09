@@ -101,15 +101,15 @@ var dialogs = [
     {
         trigger: "goto-commons",
         ontrigger: function() {
-            Q.stage().pause().hide();
-            Q.stage(1).unpause().show();
+            Q.stage().stop();
+            Q.stage(1).start();
         }
     },
     {
         trigger: "goto-kitchen",
         ontrigger: function() {
-            Q.stage().pause().hide();
-            Q.stage(0).unpause().show();
+            Q.stage().stop();
+            Q.stage(0).start();
         }
     }
 ];
