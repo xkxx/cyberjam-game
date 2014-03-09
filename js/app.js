@@ -43,5 +43,5 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
             h: 128
         });
 
-    Q.stageScene("commons");
+    Q.stageScene("kitchen");
 });
