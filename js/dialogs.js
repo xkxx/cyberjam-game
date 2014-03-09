@@ -53,7 +53,7 @@ var DialogTree = require('./dialog-impl').DialogTree;
 
 var dialogs = [
     {
-        trigger: "Man-Click",
+        trigger: "Man-click",
         message: "The coffee here is bad",
         responses: [
             {
@@ -67,11 +67,11 @@ var dialogs = [
         ]
     },
     {
-        trigger: "OldMan-Click",
+        trigger: "OldMan-click",
         message: "zz..zzz..",
     },
     {
-        trigger: "Kid-Click",
+        trigger: "Boy-click",
         message: "Lalala",
         responses: [
             {
@@ -85,7 +85,7 @@ var dialogs = [
         ]
     },
     {
-        trigger: "Mom-Click",
+        trigger: "Mom-click",
         message: "I should have had an abortion.",
         responses: [
             {

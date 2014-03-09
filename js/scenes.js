@@ -61,7 +61,7 @@ exports.scenes = function(Q) {
             type: 0
         });
 
-        var player = new Q.Player(stage.width/2 - 110, 116);
+        var player = new Q.Player(0, 116);
         var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
         var terminal = new Q.NPC("Chell", stage.width/2 - 112, 116,"terminal0.png");
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
@@ -159,10 +159,10 @@ exports.scenes = function(Q) {
      }, {sort: true} );
  
 
-//  Q.scene("sleeping-area", function(stage) {
-//
-//  });
-//
+    Q.scene("sleeping-area", function(stage) {
+  
+    }, {sort: true});
+  
 //  Q.scene("pod", function(stage) {
 //      var player = stage.insert(new Q.Player(0, 0));
 //  });
