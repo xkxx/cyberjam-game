@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 body {
     position: relative;
     background:#222;
@@ -13,11 +17,29 @@ body {
 }
 
 canvas {
+    margin-top: 50px;
     background: #DDD;
 }
 
 .wrapper {
     text-align: center;
     color: white;
-    background: black;
+}
+
+p {
+    display: inline-block;
+    padding: 5px;
+    background-color: black;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+li.selected {
+    border: 2px solid red;
 }

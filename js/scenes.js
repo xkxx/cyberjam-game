@@ -1,7 +1,7 @@
 var C = require('./constants').Constants;
 
 exports.scenes = function(Q) {
-//  Scene prototype    
+//  Scene prototype
 //  Q.scene("commons", function(stage) {
 //      stage.width = 1832;
 //      stage.height = 232;
@@ -73,7 +73,7 @@ exports.scenes = function(Q) {
             Q.npcNearby.click();
         });
         stage.actionButton = actionButton;
-  
+
         // back wall
         var back_wall = new Q.Sprite({
             x: 0,
@@ -97,10 +97,12 @@ exports.scenes = function(Q) {
             x: -stage.width / 2 + 112 / 2 + 24,
             y: stage.height / 2,
             w: 112,
-            h: 232, 
+            h: 232,
             asset: "wall-entrance.png",
         });
 
+        stage.insert(new Q.NPC("Chell", 60, 130));
+        stage.insert(new Q.Portal(-150, 100, 'ladder.png', null));
         var player = new Q.Player(0, 116);
 
         stage.insert(actionButton);
@@ -136,53 +138,70 @@ exports.scenes = function(Q) {
             type: 0 // !!important! You MUST specify Sprite type
         });
 
-        // back wall
-        var back_wall = new Q.Sprite({
+        var actionButton = new Q.UI.Button({
+            asset: 'action.png',
             x: 0,
-            y: 32,
-            h: 1,
-            w: stage.width,
-            type: C.SPRITE_BLOCKER
+            y: 100,
+            hidden: true
+        }, function() {
+            Q.npcNearby.click();
         });
-
-        // front wall
-        var front_wall = new Q.Sprite({
-            x: 0,
-            y: 200,
-            h: 1,
-            w: stage.width,
-            type: C.SPRITE_BLOCKER
-        });
-
-        // entrance right
-        var entrance_left = new Q.Sprite({
-            x: stage.width / 2 - 112 / 2,
-            y: stage.height / 2,
-            w: 112,
-            h: 232, 
-            asset: "wall-entrance.png",
-        });
-
-        // entrance right
-        var entrance_right = new Q.Sprite({
-            x: -stage.width / 2 + 112 / 2,
-            y: stage.height / 2,
-            w: 112,
-            h: 232, 
-            asset: "wall-entrance-flip.png",
-        });
-
-        var player = new Q.Player(0, 116);
-
+        stage.actionButton = actionButton;
         stage.insert(actionButton);
-        stage.insert(bg);
-        stage.insert(back_wall);
-        stage.insert(front_wall);
-        stage.insert(player);
-        stage.insert(entrance_left);
-        stage.insert(entrance_right);
 
-    });
+        stage.add("viewport").follow(player, {x: true, y: false});
+    }, {sort: true});
+
+//  Q.scene("sleeping-area", function(stage) {
+//      // back wall
+//      var back_wall = new Q.Sprite({
+//          x: 0,
+//          y: 32,
+//          h: 1,
+//          w: stage.width,
+//          type: C.SPRITE_BLOCKER
+//      });
+
+//      // front wall
+//      var front_wall = new Q.Sprite({
+//          x: 0,
+//          y: 200,
+//          h: 1,
+//          w: stage.width,
+//          type: C.SPRITE_BLOCKER
+//      });
+
+//      // entrance right
+//      var entrance_left = new Q.Sprite({
+//          x: stage.width / 2 - 112 / 2,
+//          y: stage.height / 2,
+//          w: 112,
+//          h: 232, 
+//          asset: "wall-entrance.png",
+//      });
+
+//      var actionButton = new Q.UI.Button({
+//          asset: 'action.png',
+//          x: 0,
+//          y: 100,
+//          hidden: true
+//      }, function() {
+//          dialogs.emit(Q.npcNearby+"-click");
+//      });
+//      stage.actionButton = actionButton;
+//      stage.insert(actionButton);
+
+//      var player = new Q.Player(0, 116);
+
+//      stage.insert(actionButton);
+//      stage.insert(bg);
+//      stage.insert(back_wall);
+//      stage.insert(front_wall);
+//      stage.insert(player);
+//      stage.insert(entrance_left);
+//      stage.insert(entrance_right);
+
+//  });
 //  Q.scene("pod", function(stage) {
 //      var player = stage.insert(new Q.Player(0, 0));
 //  });

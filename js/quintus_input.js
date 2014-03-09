@@ -150,7 +150,7 @@ Quintus.Input = function(Q) {
       Q.el.tabIndex = 0;
       Q.el.style.outline = 0;
 
-      Q.el.addEventListener("keydown",function(e) {
+      document.addEventListener("keydown",function(e) {
         if(Q.input.keys[e.keyCode]) {
           var actionName = Q.input.keys[e.keyCode];
           Q.inputs[actionName] = true;
@@ -160,7 +160,7 @@ Quintus.Input = function(Q) {
         e.preventDefault();
       },false);
 
-      Q.el.addEventListener("keyup",function(e) {
+      document.addEventListener("keyup",function(e) {
         if(Q.input.keys[e.keyCode]) {
           var actionName = Q.input.keys[e.keyCode];
           Q.inputs[actionName] = false;

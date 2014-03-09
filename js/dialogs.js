@@ -51,9 +51,7 @@ var NPC1 = {
 
 var DialogTree = require('./dialog-impl').DialogTree;
 
-// your dialogs here...
-
-dialogs = [{
+var dialogs = [{
     trigger: "Chell-click",
     message: "Hello World",
     responses: [

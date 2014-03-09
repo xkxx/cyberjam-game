@@ -16,8 +16,6 @@ var DialogNode = {
     }
 };
 
-
-
 var DialogTree = function(list) {
     EventEmitter.call(this);
     var self = this;
@@ -53,18 +51,40 @@ var DialogTree = function(list) {
             choices: [
             ],
             showDialog: false,
-            showChoices: false
+            showChoices: false,
+            kbChoice: 0
         },
         methods: {
             selectChoice: function(choice) {
-                choice.stopPropagation();
-                choice = choice.target.innerText;
-                this.choices.remove();
+                this.choices.splice(0, this.choices.length);
                 self.currentDialog.responses.forEach(function(item) {
                     if (item.triggerText == choice) {
                         self.triggerDialog(item);
                     }
                 });
+            },
+            kbSelect: function(e) {
+                this.selectChoice(this.choices[this.kbChoice].content);
+            },
+            kbUp: function() {
+                if (this.showChoices) {
+                    this.choices[this.kbChoice].selected = false;
+                    this.kbChoice--;
+                    if (this.kbChoice == -1) {
+                        this.kbChoice = this.choices.length - 1;
+                    }
+                    this.choices[this.kbChoice].selected = true;
+                }
+            },
+            kbDown: function() {
+                if (this.showChoices) {
+                    this.choices[this.kbChoice].selected = false;
+                    this.kbChoice++;
+                    if (this.kbChoice == this.choices.length) {
+                            this.kbChoice = 0;
+                        }
+                    this.choices[this.kbChoice].selected = true;
+                }
             },
             dismiss: function() {
                 if(!this.showChoices) {
@@ -74,6 +94,7 @@ var DialogTree = function(list) {
             }
         }
     });
+
 };
 
 DialogTree.prototype = Object.create(EventEmitter.prototype);
@@ -89,7 +110,6 @@ DialogTree.prototype.remove = function(item) {
 };
 
 DialogTree.prototype.triggerDialog = function(item) {
-    console.info('tregger dialog')
     if(item.ontrigger) {
         item.ontrigger();
     }
@@ -101,8 +121,13 @@ DialogTree.prototype.triggerDialog = function(item) {
 
         if(item.responses) {
             for (var i = 0; i < item.responses.length; i++) {
-                this.ui.choices.push(item.responses[i].triggerText);
+                this.ui.choices.push({
+                    content: item.responses[i].triggerText,
+                    selected: false
+                });
             }
+            this.ui.kbChoice = 0;
+            this.ui.choices[0].selected = true;
             this.ui.showChoices = true;
         }
         else {
@@ -110,6 +135,10 @@ DialogTree.prototype.triggerDialog = function(item) {
         }
         this.currentDialog = item;
         this.ui.showDialog = true;
+
+    }
+    else {
+        this.ui.showDialog = false;
     }
 };
 
