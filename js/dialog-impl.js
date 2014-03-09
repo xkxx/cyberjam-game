@@ -110,6 +110,10 @@ DialogTree.prototype.remove = function(item) {
 };
 
 DialogTree.prototype.triggerDialog = function(item) {
+    if (this.currentDialog == item) {
+        return;
+    }
+
     if(item.ontrigger) {
         item.ontrigger();
     }

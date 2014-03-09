@@ -1,17 +1,20 @@
-var C = require('./constants').Constants;
+var C = require('./constants').Constants,
+    dialogs = require('./dialogs').dialogs;
 
 exports.Portal = function(Q) {
     Q.Sprite.extend("Portal", {
-        init: function(x, y, image, dst) {
+        init: function(x) {
             this._super({
                 x: x,
-                y: y,
-                asset: image,
-                type: C.SPRITE_NP
+                y: C.VIEW_HEIGHT / 2,
+                w: 20,
+                h: C.VIEW_HEIGHT,
+                type: C.SPRITE_BLOCKER
             });
+            this.on("hit",this,"activate");
         },
-        click: function() {
-
+        activate: function() {
+            dialogs.emit("portal-click");
         }
 
     });

@@ -51,19 +51,39 @@ var NPC1 = {
 
 var DialogTree = require('./dialog-impl').DialogTree;
 
-var dialogs = [{
-    trigger: "Chell-click",
-    message: "Hello World",
-    responses: [
-        {
-            triggerText: "Option 1",
-            message: "Response 1"
-        },
-        {
-            triggerText: "Option 2",
-            message: "Response 2"
-        }
-    ]
-}];
+var dialogs = [
+    {
+        trigger: "Chell-click",
+        message: "Hello World",
+        responses: [
+            {
+                triggerText: "Option 1",
+                message: "Response 1"
+            },
+            {
+                triggerText: "Option 2",
+                message: "Response 2"
+            }
+        ]
+    },
+    {
+        trigger: "portal-click",
+        message: "Where do you wanna go?",
+        responses: [
+            {
+                triggerText: "Train Commons",
+                ontrigger: function() {
+                    Q.stageScene("commons");
+                }
+            },
+            {
+                triggerText: "Kitchen",
+                ontrigger: function() {
+                    Q.stageScene("kitchen");
+                }
+            }
+        ]
+    }
+];
 
 exports.dialogs = new DialogTree(dialogs);
