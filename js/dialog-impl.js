@@ -13,6 +13,17 @@ var DialogNode = {
                 }
             }
         }
+    },
+    removeTrigger: function(trigger) {
+        this.root.removeAllListeners(trigger);
+    },
+    addTrigger: function(trigger) {
+        var root = this.root;
+        if(this.trigger) {
+            root.removeAllListeners(this.trigger);
+        }
+        this.trigger = trigger;
+        root.on(trigger, root.triggerDialog.bind(trigger, this));
     }
 };
 
@@ -32,6 +43,7 @@ var DialogTree = function(list) {
                 // if the parent node has.
                 item.prototype = DialogNode;
                 item.parent = list;
+                item.root = self;
                 if (item.trigger) {
                     EventEmitter.prototype.on.call(self, item.trigger, self.triggerDialog.bind(self, item));
                 }
@@ -64,7 +76,12 @@ var DialogTree = function(list) {
                 });
             },
             kbSelect: function(e) {
-                this.selectChoice(this.choices[this.kbChoice].content);
+                if (this.showChoices) {
+                    this.selectChoice(this.choices[this.kbChoice].content);
+                }
+                else {
+                    self.closeDialog();
+                }
             },
             kbUp: function() {
                 if (this.showChoices) {
@@ -88,8 +105,7 @@ var DialogTree = function(list) {
             },
             dismiss: function() {
                 if(!this.showChoices) {
-                    this.showDialog = false;
-                    self.currentDialog = null;
+                    self.closeDialog();
                 }
             }
         }
@@ -139,11 +155,16 @@ DialogTree.prototype.triggerDialog = function(item) {
         }
         this.currentDialog = item;
         this.ui.showDialog = true;
-
+        Q.stage().stop();
     }
     else {
-        this.ui.showDialog = false;
+        this.closeDialog();
     }
 };
+
+DialogTree.prototype.closeDialog = function() {
+    this.ui.showDialog = false;
+    this.currentDialog = null;
+}
 
 exports.DialogTree = DialogTree;

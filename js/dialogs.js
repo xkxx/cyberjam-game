@@ -72,10 +72,8 @@ var dialogs = [
     },
     {
         trigger: "Chell-click",
-        ontrigger: function () {
-            Q.stage().stop();
-            Q.stage(4).start();
-        }
+        message: "Hi there",
+        emit: "goto-terminal"
     },
     {
         trigger: "Boy-click",
@@ -131,6 +129,13 @@ var dialogs = [
         ontrigger: function() {
             Q.stage().stop();
             Q.stage(3).start();
+        }
+    },
+    {
+        trigger: "goto-terminal",
+        ontrigger: function() {
+            Q.stage().stop();
+            Q.stage(4).start();
         }
     }
 ];
