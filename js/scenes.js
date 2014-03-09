@@ -60,14 +60,16 @@ exports.scenes = function(Q) {
         });
 
         var player = new Q.Player(0, 116);
+        var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
-        stage.insert(new Q.NPC("Chell", 60, 130));
+        stage.insert(new Q.NPC("Chell", 60, 130,"terminal0.png"));
         stage.insert(portal_left);
         stage.insert(actionButton);
         stage.insert(bg);
         stage.insert(back_wall);
         stage.insert(front_wall);
+        stage.insert(boy);
         stage.insert(player);
         stage.insert(entrance);
     });
@@ -135,7 +137,7 @@ exports.scenes = function(Q) {
 
           var portal_left = new Q.Portal(-stage.width / 2, "commons");
           var portal_right = new Q.Portal(stage.width / 2, "commons");
-          var player = new Q.Player(0, 116);
+          var player = (Q.lastPos == undefined) ? new Q.Player(0, 116) : new Q.Player(Q.lastPos, 116);
   
           stage.insert(portal_left);
           stage.insert(portal_right);
