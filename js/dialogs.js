@@ -118,6 +118,13 @@ var dialogs = [
             Q.stage().stop();
             Q.stage(2).start();
         }
+    },
+    {
+        trigger: "goto-closet",
+        ontrigger: function() {
+            Q.stage().stop();
+            Q.stage(3).start();
+        }
     }
 ];
 

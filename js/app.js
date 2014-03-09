@@ -58,7 +58,7 @@ Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 
 Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
-        'kitchen-scene.png', 'sleeping-scene.png', 'terminal0.png', 'boy.png' ], function() {
+        'kitchen-scene.png', 'closet-scene.png', 'sleeping-scene.png', 'terminal0.png', 'boy.png' ], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
@@ -72,7 +72,8 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
 
     var kitchenScene = Q.stageScene("kitchen", 0);
     var commonsScene = Q.stageScene("commons", 1);
-    var podsScene = Q.stageScene("pods", 2);
+    var podsScene = Q.stageScene("pods", 2).stop();
+    var closetScene = Q.stageScene("closet", 3).stop();
 
     commonsScene.start();
 
