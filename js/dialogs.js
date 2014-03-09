@@ -53,16 +53,49 @@ var DialogTree = require('./dialog-impl').DialogTree;
 
 var dialogs = [
     {
-        trigger: "Chell-click",
-        message: "Hello World",
+        trigger: "Man-Click",
+        message: "The coffee here is bad",
         responses: [
             {
-                triggerText: "Option 1",
-                message: "Response 1"
+                triggerText: "Do you know where we're going?",
+                message: "It doesn’t matter. It can't be colder than the last place."
             },
             {
                 triggerText: "Option 2",
                 message: "Response 2"
+            }
+        ]
+    },
+    {
+        trigger: "OldMan-Click",
+        message: "zz..zzz..",
+        responses:
+    },
+    {
+        trigger: "Kid-Click",
+        message: ,
+        responses: [
+            {
+                triggerText: "What are you playing?",
+                message: "A game."
+            },
+            {
+                triggerText: "Fuck you",
+                message: "You too"
+            }
+        ]
+    },
+    {
+        trigger: "Mom-Click",
+        message: "I should have had an abortion.",
+        responses: [
+            {
+                triggerText: "That's terrible.",
+                message: "I'll just simulate it in my pod."
+            },
+            {
+                triggerText: "Want me to kill him?",
+                message: "Eh, not right now."
             }
         ]
     },
