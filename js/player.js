@@ -88,11 +88,11 @@ exports.Player = function(Q) {
 
            var x = Math.max( -this.stage.width / 2 + C.VIEW_WIDTH / 2, this.p.x);
            x = Math.min(this.stage.width / 2 - C.VIEW_WIDTH / 2, x);
-           var y = Math.max(this.stage.height / 2);
+           var y = Math.max(C.VIEW_HEIGHT / 2, this.p.y);
+           y = Math.min(this.stage.height - C.VIEW_HEIGHT / 2, y);
            if (this.stage.viewport == undefined) {
                 console.log("ERROR");
            }
-
            this.stage.viewport.centerOn(x,y);
        }
      });
