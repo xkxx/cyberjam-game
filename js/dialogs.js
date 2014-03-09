@@ -71,6 +71,13 @@ var dialogs = [
         message: "zz..zzz..",
     },
     {
+        trigger: "Chell-click",
+        ontrigger: function () {
+            Q.stage().stop();
+            Q.stage(4).start();
+        }
+    },
+    {
         trigger: "Boy-click",
         message: "Lalala",
         responses: [

@@ -382,6 +382,43 @@ exports.scenes = function(Q) {
           stage.insert(entrance_right);
 
     }, {sort: true});
+
+    Q.scene("terminal", function(stage) {
+          stage.width = 700;
+          stage.height = 232;
+          stage.add("viewport");
+
+          var actionButton = new Q.UI.Button({
+              asset: 'action.png',
+              x: 0,
+              y: 100,
+              hidden: true
+          }, function() {
+              Q.npcNearby.click();
+          });
+          stage.actionButton = actionButton;
+  
+          // bg
+          var bg = new Q.Sprite({
+              x: stage.width / 2,
+              y: stage.height / 2, 
+              z: 0,
+              h: stage.height,
+              w: stage.width,
+              asset: 'terminal-scene.png',
+              type: 0 // !!important! You MUST specify Sprite type
+          });
+            
+          var portal_right = new Q.Portal(stage.width / 2, "pods");
+          //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
+
+          //stage.insert(portal_left);
+          stage.insert(portal_right);
+          stage.insert(bg);
+          stage.insert(actionButton);
+    }, {sort: true});
+
+
   
 //  Q.scene("pod", function(stage) {
 //      var player = stage.insert(new Q.Player(0, 0));
