@@ -14,6 +14,8 @@
     // triggerText will be displayed, and activate the dialog
     // if selected
     triggerText: "",
+    // or, if the dialog should be triggered
+    triggerInline: "",
     // the dialog content to be displayed
     // Will display in multiple "slides" if is multiline
     // Won't display anything if empty
@@ -106,36 +108,41 @@ var dialogs = [
     {
         trigger: "goto-commons",
         ontrigger: function() {
-            Q.stage().stop();
             Q.stage(1).start();
+            Q.stage().stop();
+            Q.activeStage = 1;
         }
     },
     {
         trigger: "goto-kitchen",
         ontrigger: function() {
-            Q.stage().stop();
             Q.stage(0).start();
+            Q.stage().stop();
+            Q.activeStage = 0;
         }
     },
     {
         trigger: "goto-pods",
         ontrigger: function() {
-            Q.stage().stop();
             Q.stage(2).start();
+            Q.stage().stop();
+            Q.activeStage = 2;
         }
     },
     {
         trigger: "goto-closet",
         ontrigger: function() {
-            Q.stage().stop();
             Q.stage(3).start();
+            Q.stage().stop();
+            Q.activeStage = 3;
         }
     },
     {
         trigger: "goto-terminal",
         ontrigger: function() {
-            Q.stage().stop();
             Q.stage(4).start();
+            Q.stage().stop();
+            Q.activeStage = 4;
         }
     }
 ];
