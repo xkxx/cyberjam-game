@@ -48,9 +48,9 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #000;
 }
 
 li.selected {
-    border: 2px solid red;
+    background: #222;
 }
