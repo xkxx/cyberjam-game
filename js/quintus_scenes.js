@@ -509,6 +509,7 @@ Quintus.Scenes = function(Q) {
     */
     pause: function() {
       this.paused = true;
+      return this;
     },
 
     /**
@@ -519,6 +520,7 @@ Quintus.Scenes = function(Q) {
     */
     unpause: function() {
       this.paused = false;
+      return this;
     },
 
     _gridCellCheck: function(type,id,obj,collisionMask) {
