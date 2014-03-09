@@ -47,8 +47,6 @@ Q.Sprite.extend("Entrance", {
     },
 });
 
-console.info(dialogs);
-
 Q.input.on("action", function() {
     if(Q.npcNearby && !dialogs.currentDialog) {
         Q.npcNearby.click();
@@ -59,7 +57,8 @@ Q.input.on("action", function() {
 Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 
-Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.png', 'ladder.png'], function() {
+Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
+        'kitchen-scene.png' ], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
@@ -71,7 +70,7 @@ Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.
             h: 128
         });
 
-    Q.stageScene("common-area");
+    Q.stageScene("commons");
 });
 
 exports.Q = Q;

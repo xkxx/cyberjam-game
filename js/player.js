@@ -75,18 +75,25 @@ exports.Player = function(Q) {
            var nearby = this.stage.search(this.frontVision);
            nearby = nearby || this.stage.search(this.backVision);
 
-           if(nearby) {
+           if (nearby) {
               this.stage.actionButton.set({
                   x: nearby.obj.p.x,
                   y: nearby.obj.p.y - nearby.obj.p.cy - 40,
                   hidden: false
               });
               Q.npcNearby = nearby.obj;
+           } else {
+                 this.stage.actionButton.hide();
            }
 
-           else {
-               this.stage.actionButton.hide();
+           var x = Math.max( -this.stage.width / 2 + C.VIEW_WIDTH / 2, this.p.x);
+           x = Math.min(this.stage.width / 2 - C.VIEW_WIDTH / 2, x);
+           var y = Math.max(this.stage.height / 2);
+           if (this.stage.viewport == undefined) {
+                console.log("ERROR");
            }
+
+           this.stage.viewport.centerOn(x,y);
        }
      });
 };
