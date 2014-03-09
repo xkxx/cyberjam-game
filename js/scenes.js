@@ -54,18 +54,19 @@ exports.scenes = function(Q) {
         var entrance = new Q.Sprite({
             x: -stage.width / 2 + 112 / 2 + 24,
             y: stage.height / 2,
+            z: stage.height,
             w: 112,
             h: 232,
             asset: "wall-entrance.png",
+            type: 0
         });
 
-        var player = new Q.Player(0, 116);
+        var player = new Q.Player(stage.width/2 - 110, 116);
         var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
-        var terminal = new Q.NPC("Chell", 60, 130,"terminal0.png");
+        var terminal = new Q.NPC("Chell", stage.width/2 - 112, 116,"terminal0.png");
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
         stage.insert(portal_left);
-        stage.insert(actionButton);
         stage.insert(bg);
         stage.insert(back_wall);
         stage.insert(front_wall);
@@ -73,7 +74,8 @@ exports.scenes = function(Q) {
         stage.insert(boy);
         stage.insert(player);
         stage.insert(entrance);
-    });
+        stage.insert(actionButton);
+    }, {sort: true});
 
      Q.scene("kitchen", function(stage) {
           stage.width = 700;
@@ -93,7 +95,8 @@ exports.scenes = function(Q) {
           // bg
           var bg = new Q.Sprite({
               x: 0,
-              y: stage.height / 2,
+              y: stage.height / 2, 
+              z: 0,
               h: stage.height,
               w: stage.width,
               asset: 'kitchen-scene.png',
@@ -122,18 +125,22 @@ exports.scenes = function(Q) {
           var entrance_left = new Q.Sprite({
               x: stage.width / 2 - 112 / 2,
               y: stage.height / 2,
+              z: stage.height,
               w: 112,
               h: 232, 
               asset: "wall-entrance.png",
+              type: 0
           });
   
-          // entrance right
+          // entrance left
           var entrance_right = new Q.Sprite({
               x: -stage.width / 2 + 112 / 2,
               y: stage.height / 2,
+              z: stage.height,
               w: 112,
               h: 232, 
               asset: "wall-entrance-flip.png",
+              type: 0
           });
 
           var portal_left = new Q.Portal(-stage.width / 2, "commons");
@@ -149,7 +156,7 @@ exports.scenes = function(Q) {
           stage.insert(player);
           stage.insert(entrance_left);
           stage.insert(entrance_right);
-     });
+     }, {sort: true} );
  
 
 //  Q.scene("sleeping-area", function(stage) {

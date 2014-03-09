@@ -50,7 +50,7 @@ exports.Player = function(Q) {
        },
        step: function(dt) {
 
-           this.p.z = this.p.y + C.PLAYER_HEIGHT;
+           this.p.z = this.p.y + C.PLAYER_HEIGHT/2;
 
            if (this.p.direction == 'left') {
                this.frontVision.set(this.p.x - this.p.cx, this.p.y);
