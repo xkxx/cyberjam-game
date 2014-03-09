@@ -3,7 +3,7 @@ var C = require('./constants').Constants,
 
 exports.Portal = function(Q) {
     Q.Sprite.extend("Portal", {
-        init: function(x) {
+        init: function(x, dst) {
             this._super({
                 x: x,
                 y: C.VIEW_HEIGHT / 2,
@@ -11,10 +11,11 @@ exports.Portal = function(Q) {
                 h: C.VIEW_HEIGHT,
                 type: C.SPRITE_BLOCKER
             });
+            this.dst = dst;
             this.on("hit",this,"activate");
         },
         activate: function() {
-            dialogs.emit("portal-click");
+            dialogs.emit("goto-"+dst);
         }
 
     });

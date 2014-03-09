@@ -67,22 +67,16 @@ var dialogs = [
         ]
     },
     {
-        trigger: "portal-click",
-        message: "Where do you wanna go?",
-        responses: [
-            {
-                triggerText: "Train Commons",
-                ontrigger: function() {
-                    Q.stageScene("commons");
-                }
-            },
-            {
-                triggerText: "Kitchen",
-                ontrigger: function() {
-                    Q.stageScene("kitchen");
-                }
-            }
-        ]
+        trigger: "goto-commons",
+        ontrigger: function() {
+            Q.stageScene("commons");
+        }
+    },
+    {
+        trigger: "goto-kitchen",
+        ontrigger: function() {
+            Q.stageScene("kitchen");
+        }
     }
 ];
 
