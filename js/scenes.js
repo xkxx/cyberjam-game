@@ -61,14 +61,15 @@ exports.scenes = function(Q) {
 
         var player = new Q.Player(0, 116);
         var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
+        var terminal = new Q.NPC("Chell", 60, 130,"terminal0.png");
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
-        stage.insert(new Q.NPC("Chell", 60, 130,"terminal0.png"));
         stage.insert(portal_left);
         stage.insert(actionButton);
         stage.insert(bg);
         stage.insert(back_wall);
         stage.insert(front_wall);
+        stage.insert(terminal);
         stage.insert(boy);
         stage.insert(player);
         stage.insert(entrance);
