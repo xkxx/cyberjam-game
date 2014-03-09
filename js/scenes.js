@@ -39,15 +39,6 @@ exports.scenes = function(Q) {
         var entrance_2 = new Q.Entrance(-204, 116);
         var entrance_3 = new Q.Entrance(516, 116);
 
-        // prevent player from getting ahead of the camera
-        stage.insert(new Q.Sprite({
-            x: 0,
-            y: 345,
-            h: 1,
-            w: 1000,
-            type: C.SPRITE_BLOCKER
-        }));
-
         stage.insert(new Q.NPC("Chell", 60, 130));
         stage.insert(new Q.Portal(-150, 100, 'ladder.png', null));
 
@@ -69,15 +60,14 @@ exports.scenes = function(Q) {
         stage.insert(entrance_3);
 
         stage.add("viewport").follow(player, {x: true, y: false});
-    });
+    }, {sort: true});
 
     Q.scene("sleeping-area", function(stage) {
-        var player = stage.insert(new Q.Player(0, 260));
 
         // back wall
         stage.insert(new Q.Sprite({
             x: 0,
-            y: 100,
+            y: 32,
             h: 1,
             w: 1000,
             type: C.SPRITE_BLOCKER
@@ -86,12 +76,13 @@ exports.scenes = function(Q) {
         // prevent player from getting ahead of the camera
         stage.insert(new Q.Sprite({
             x: 0,
-            y: 345,
+            y: 200,
             h: 1,
             w: 1000,
             type: C.SPRITE_BLOCKER
         }));
 
+        var player = stage.insert(new Q.Player(0, 128));
         var actionButton = new Q.UI.Button({
             asset: 'action.png',
             x: 0,

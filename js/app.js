@@ -13,8 +13,6 @@ var Q = Quintus({ development: true, imagePath: "assets/"})
     .controls(true)
     .touch();
 
-window.Q = Q;
-
 //When uncommented wierd artifacts appear in animation
 //Q.ctx.imageSmoothingEnabled = false;
 //Q.ctx.webkitImageSmoothingEnabled = false;
@@ -22,6 +20,17 @@ window.Q = Q;
 
 Q.gravityY = 0;
 Q.gravityX = 0;
+
+Q.input.keyboardControls({
+    LEFT: "left",
+    RIGHT: "right",
+    UP: "up",
+    DOWN: "down",
+    SPACE: "action",
+    X: "action",
+    ENTER: "action",
+    ESC: "action"
+});
 
 //the overlay entrance the char walks beneath
 Q.Sprite.extend("Entrance", {
@@ -38,12 +47,17 @@ Q.Sprite.extend("Entrance", {
     },
 });
 
+console.info(dialogs);
 
 Q.input.on("action", function() {
-    if(Q.npcNearby) {
+    if(Q.npcNearby && !dialogs.currentDialog) {
         Q.npcNearby.click();
+    } else if (dialogs.currentDialog) {
+        dialogs.ui.kbSelect();
     }
 });
+Q.input.on('up', function() {dialogs.ui.kbUp();});
+Q.input.on('down', function() {dialogs.ui.kbDown();});
 
 Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.png', 'ladder.png'], function() {
     //extend to include all sprites
@@ -59,3 +73,5 @@ Q.load(['player.png', 'main-scene.png', 'wall-entrance.png', 'npc.png', 'action.
 
     Q.stageScene("common-area");
 });
+
+exports.Q = Q;
