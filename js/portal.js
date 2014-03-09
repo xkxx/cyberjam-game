@@ -15,7 +15,7 @@ exports.Portal = function(Q) {
             this.on("hit",this,"activate");
         },
         activate: function() {
-            dialogs.emit("goto-"+dst);
+            dialogs.emit("goto-" + this.dst);
         }
 
     });
