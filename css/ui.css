@@ -11,8 +11,11 @@
 
 body {
     position: relative;
-    background:#222;
+    background:#000;
+    font-size: 1em;
     font-family: pixel, sans-serif;
+    font-smooth: never;
+    -webkit-font-smoothing : none;
 }
 
 #gameCanvas_container, .wrapper {

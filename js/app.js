@@ -14,9 +14,9 @@ var Q = Quintus({ development: true, imagePath: "assets/"})
     .touch();
 
 //When uncommented wierd artifacts appear in animation
-//Q.ctx.imageSmoothingEnabled = false;
-//Q.ctx.webkitImageSmoothingEnabled = false;
-//Q.ctx.mozImageSmoothingEnabled = false;
+Q.ctx.imageSmoothingEnabled = false;
+Q.ctx.webkitImageSmoothingEnabled = false;
+Q.ctx.mozImageSmoothingEnabled = false;
 
 Q.gravityY = 0;
 Q.gravityX = 0;
