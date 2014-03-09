@@ -70,7 +70,10 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
             h: 128
         });
 
-    Q.stageScene("kitchen");
+    var kitchenScene = Q.stageScene("kitchen", 0).pause();
+    var commonsScene = Q.stageScene("commons", 1).pause();
+
+    commonsScene.unpause().show();
 });
 
 exports.Q = Q;

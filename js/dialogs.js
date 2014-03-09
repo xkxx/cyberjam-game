@@ -69,11 +69,10 @@ var dialogs = [
     {
         trigger: "OldMan-Click",
         message: "zz..zzz..",
-        responses:
     },
     {
         trigger: "Kid-Click",
-        message: ,
+        message: "Lalala",
         responses: [
             {
                 triggerText: "What are you playing?",
@@ -102,13 +101,15 @@ var dialogs = [
     {
         trigger: "goto-commons",
         ontrigger: function() {
-            Q.stageScene("commons");
+            Q.stage().pause().hide();
+            Q.stage(1).unpause().show();
         }
     },
     {
         trigger: "goto-kitchen",
         ontrigger: function() {
-            Q.stageScene("kitchen");
+            Q.stage().pause().hide();
+            Q.stage(0).unpause().show();
         }
     }
 ];
