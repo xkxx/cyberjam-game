@@ -95,4 +95,5 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
 
 });
 
+window.Q = Q;
 exports.Q = Q;
