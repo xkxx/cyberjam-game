@@ -370,9 +370,9 @@ exports.scenes = function(Q) {
 
           var player = new Q.Player(stage.width/2, 116);
           var portal_right = new Q.Portal(stage.width / 2, "pods");
-          //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
+          var portal_left = new Q.Portal(-stage.width / 2, "outside"); 
 
-          //stage.insert(portal_left);
+          stage.insert(portal_left);
           stage.insert(portal_right);
           stage.insert(actionButton);
           stage.insert(bg);
@@ -433,15 +433,16 @@ exports.scenes = function(Q) {
           });
           stage.actionButton = actionButton;
   
+
           // bg
           var bg = new Q.Sprite({
-              x: 0,
-              y: stage.height / 2, 
-              z: 0,
-              h: stage.height,
-              w: stage.width,
-              asset: 'outside-scene.png',
-              type: 0 // !!important! You MUST specify Sprite type
+            x: 0,
+            y: stage.height / 2,
+            z: 0,
+            h: stage.height,
+            w: stage.width,
+            asset: 'outside-scene.png',
+            type: 0 // !!important! You MUST specify Sprite type
           });
   
           // back wall
@@ -469,7 +470,7 @@ exports.scenes = function(Q) {
           //stage.insert(portal_left);
           stage.insert(portal_right);
           stage.insert(actionButton);
-          stage.insert(bg);
+              stage.insert(bg);
 //        stage.insert(back_wall);
 //        stage.insert(front_wall);
           stage.insert(player);
