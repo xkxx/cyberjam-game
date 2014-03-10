@@ -464,6 +464,10 @@ exports.scenes = function(Q) {
           });
 
           var player = new Q.Player(stage.width/2, 87, .5);
+          var burner1 = new Q.Burner(111, 224, 1);
+          var burner2 = new Q.Burner(183, 224, 3);
+          var burner3 = new Q.Burner(255, 224, 5);
+          var burner4 = new Q.Burner(327, 224, 6);
           player.p.xspeed /= 2;
           player.p.yspeed /= 2;
           var portal_right = new Q.Portal(stage.width / 2, "closet");
@@ -476,6 +480,10 @@ exports.scenes = function(Q) {
           stage.insert(back_wall);
           stage.insert(front_wall);
           stage.insert(player);
+          stage.insert(burner1);
+          stage.insert(burner2);
+          stage.insert(burner3);
+          stage.insert(burner4);
 
     }, {sort: true});
 
