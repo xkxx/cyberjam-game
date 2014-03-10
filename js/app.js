@@ -54,6 +54,7 @@ Q.input.on("action", function() {
         dialogs.ui.kbSelect();
     }
 });
+
 Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 
@@ -69,20 +70,25 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
             w: 192,
             h: 128
         });
-//  Q.sheet("terminal", 
+//  Q.sheet("terminal",
 //      "terminal.png",
 //      {
 //      });
 
     var kitchenScene = Q.stageScene("kitchen", 0);
     var commonsScene = Q.stageScene("commons", 1);
-    var podsScene = Q.stageScene("pods", 2).stop();
-    var closetScene = Q.stageScene("closet", 3).stop();
-    var terminalScene = Q.stageScene("terminal", 4).stop();
+    var podsScene = Q.stageScene("pods", 2);
+    var closetScene = Q.stageScene("closet", 3);
+    var terminalScene = Q.stageScene("terminal", 4);
 
-    commonsScene.start();
-
-    setTimeout(function(){kitchenScene.stop();} ,100);
+    setTimeout(function(){
+        kitchenScene.stop();
+        podsScene.stop();
+        closetScene.stop();
+        terminalScene.stop();
+        Q.activeStage = 1;
+        Q.stage().start();
+    }, 100);
 
 });
 

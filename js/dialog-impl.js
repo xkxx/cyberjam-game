@@ -155,7 +155,7 @@ DialogTree.prototype.triggerDialog = function(item) {
         }
         this.currentDialog = item;
         this.ui.showDialog = true;
-        Q.stage().stop();
+        Q.stage().pause();
     }
     else {
         this.closeDialog();
@@ -165,6 +165,7 @@ DialogTree.prototype.triggerDialog = function(item) {
 DialogTree.prototype.closeDialog = function() {
     this.ui.showDialog = false;
     this.currentDialog = null;
+    Q.stage().unpause();
 }
 
 exports.DialogTree = DialogTree;

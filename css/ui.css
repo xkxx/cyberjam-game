@@ -40,15 +40,22 @@ canvas {
 p {
     display: inline-block;
     padding: 5px;
-    background-color: black;
+    background-color: #40f;
+    margin-bottom: 5px;
 
 }
 
 ul {
+    display: inline-block;
     list-style-type: none;
     margin: 0;
     padding: 0;
     background-color: #000;
+}
+
+li {
+    padding: 4px;
+
 }
 
 li.selected {
