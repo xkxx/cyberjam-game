@@ -418,8 +418,65 @@ exports.scenes = function(Q) {
           stage.insert(actionButton);
     }, {sort: true});
 
+    Q.scene("outside", function(stage) {
+          stage.width = 700;
+          stage.height = 552;
+          stage.add("viewport");
 
+          var actionButton = new Q.UI.Button({
+              asset: 'action.png',
+              x: 0,
+              y: 100,
+              hidden: true
+          }, function() {
+              Q.npcNearby.click();
+          });
+          stage.actionButton = actionButton;
   
+          // bg
+          var bg = new Q.Sprite({
+              x: 0,
+              y: stage.height / 2, 
+              z: 0,
+              h: stage.height,
+              w: stage.width,
+              asset: 'outside-scene.png',
+              type: 0 // !!important! You MUST specify Sprite type
+          });
+  
+          // back wall
+          var back_wall = new Q.Sprite({
+              x: 0,
+              y: 32,
+              h: 1,
+              w: stage.width,
+              type: C.SPRITE_BLOCKER
+          });
+  
+          // front wall
+          var front_wall = new Q.Sprite({
+              x: 0,
+              y: 200,
+              h: 1,
+              w: stage.width,
+              type: C.SPRITE_BLOCKER
+          });
+  
+          var player = new Q.Player(stage.width/2, stage.height/2);
+          var portal_right = new Q.Portal(stage.width / 2, "closet");
+          //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
+
+          //stage.insert(portal_left);
+          stage.insert(portal_right);
+          stage.insert(actionButton);
+          stage.insert(bg);
+//        stage.insert(back_wall);
+//        stage.insert(front_wall);
+          stage.insert(player);
+
+    }, {sort: true});
+
+ 
 //  Q.scene("pod", function(stage) {
 //      var player = stage.insert(new Q.Player(0, 0));
 //  });

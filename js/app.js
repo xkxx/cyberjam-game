@@ -80,13 +80,15 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
     var podsScene = Q.stageScene("pods", 2);
     var closetScene = Q.stageScene("closet", 3);
     var terminalScene = Q.stageScene("terminal", 4);
+    var outsideScene = Q.stageScene("outside", 5);
 
     setTimeout(function(){
         kitchenScene.stop();
         podsScene.stop();
         closetScene.stop();
         terminalScene.stop();
-        Q.activeStage = 1;
+        outsideScene.stop();
+        Q.activeStage = 5;
         Q.stage().start();
     }, 100);
 
