@@ -889,7 +889,7 @@ Quintus.Scenes = function(Q) {
     }
   });
 
-  Q.activeStage = 0;
+  //Q.activeStage = 0;
 
   Q.StageSelector = Q.Class.extend({
     emptyList: [],
@@ -1066,7 +1066,6 @@ Quintus.Scenes = function(Q) {
 
     // Make this this the active stage and initialize the stage,
     // calling loadScene to popuplate the stage if we have a scene.
-    Q.activeStage = num;
     var stage = Q.stages[num] = new StageClass(scene,options);
 
     // Load an assets object array
@@ -1077,7 +1076,6 @@ Quintus.Scenes = function(Q) {
     if(scene) {
       stage.loadScene();
     }
-    Q.activeStage = 0;
 
     // If there's no loop active, run the default stageGameLoop
     if(!Q.loop) {
@@ -1096,8 +1094,7 @@ Quintus.Scenes = function(Q) {
     if(dt > 1/15) { dt  = 1.0/15; }
 
     for(i =0,len=Q.stages.length;i<len;i++) {
-      Q.activeStage = i;
-      stage = Q.stage();
+      stage = Q.stage(i);
       if(stage) {
         stage.step(dt);
       }
@@ -1106,14 +1103,11 @@ Quintus.Scenes = function(Q) {
     if(Q.ctx) { Q.clear(); }
 
     for(i =0,len=Q.stages.length;i<len;i++) {
-      Q.activeStage = i;
-      stage = Q.stage();
+      stage = Q.stage(i);
       if(stage) {
         stage.render(Q.ctx);
       }
     }
-
-    Q.activeStage = 0;
 
     if(Q.input && Q.ctx) { Q.input.drawCanvas(Q.ctx); }
   };

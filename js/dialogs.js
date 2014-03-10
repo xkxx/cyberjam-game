@@ -14,7 +14,8 @@
     // triggerText will be displayed, and activate the dialog
     // if selected
     triggerText: "",
-    // or, if the dialog should be triggered
+    // or, triggerInline can be used if the dialog should be
+    // triggered by a signal when its parent is triggered.
     triggerInline: "",
     // the dialog content to be displayed
     // Will display in multiple "slides" if is multiline
