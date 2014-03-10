@@ -7,7 +7,7 @@ exports.scenes = function(Q) {
 //  });
 
     Q.scene("commons", function(stage) {
-        stage.width = 1832;
+        stage.width = 1288;
         stage.height = 232;
         stage.add("viewport");
 
