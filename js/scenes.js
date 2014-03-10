@@ -420,7 +420,7 @@ exports.scenes = function(Q) {
 
     Q.scene("outside", function(stage) {
           stage.width = 700;
-          stage.height = 552;
+          stage.height = 232;
           stage.add("viewport");
 
           var actionButton = new Q.UI.Button({
@@ -448,7 +448,7 @@ exports.scenes = function(Q) {
           // back wall
           var back_wall = new Q.Sprite({
               x: 0,
-              y: 32,
+              y: 60,
               h: 1,
               w: stage.width,
               type: C.SPRITE_BLOCKER
@@ -457,22 +457,24 @@ exports.scenes = function(Q) {
           // front wall
           var front_wall = new Q.Sprite({
               x: 0,
-              y: 200,
+              y: 125,
               h: 1,
               w: stage.width,
               type: C.SPRITE_BLOCKER
           });
-  
-          var player = new Q.Player(stage.width/2, stage.height/2);
+
+          var player = new Q.Player(stage.width/2, 87, .5);
+          player.p.xspeed /= 2;
+          player.p.yspeed /= 2;
           var portal_right = new Q.Portal(stage.width / 2, "closet");
           //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
 
           //stage.insert(portal_left);
           stage.insert(portal_right);
           stage.insert(actionButton);
-              stage.insert(bg);
-//        stage.insert(back_wall);
-//        stage.insert(front_wall);
+          stage.insert(bg);
+          stage.insert(back_wall);
+          stage.insert(front_wall);
           stage.insert(player);
 
     }, {sort: true});
