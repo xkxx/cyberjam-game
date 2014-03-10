@@ -48,7 +48,7 @@ Q.Sprite.extend("Entrance", {
 });
 
 Q.animations('burner', {
-    burn: { frames: [0,1,2,3,4,5], rate: 1/10}
+    burn: { frames: [0,1,2,3,4,5], rate: 1/7}
 });
 Q.Sprite.extend("Burner",  {
     init: function(x, y, frameStart) {
@@ -78,7 +78,7 @@ Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
 
-Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
+Q.load(['player.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
         'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
@@ -118,7 +118,7 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
         closetScene.stop();
         terminalScene.stop();
         outsideScene.stop();
-        Q.activeStage = 5;
+        Q.activeStage = 1;
         Q.stage().start();
     }, 100);
 

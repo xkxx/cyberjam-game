@@ -63,6 +63,7 @@ exports.scenes = function(Q) {
 
         var player = new Q.Player(0, 116);
         var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
+        var oldman = new Q.NPC("OldMan", -150, 100, "oldman-chair.png"); 
         var terminal = new Q.NPC("Chell", stage.width/2 - 104, 124,"terminal0.png");
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
@@ -72,6 +73,7 @@ exports.scenes = function(Q) {
         stage.insert(front_wall);
         stage.insert(terminal);
         stage.insert(boy);
+        stage.insert(oldman);
         stage.insert(player);
         stage.insert(entrance);
         stage.insert(actionButton);
@@ -456,7 +458,7 @@ exports.scenes = function(Q) {
   
           // front wall
           var front_wall = new Q.Sprite({
-              x: 0,
+              x: 240,
               y: 125,
               h: 1,
               w: stage.width,
