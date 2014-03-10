@@ -145,7 +145,15 @@ var dialogs = [
             Q.stage().stop();
             Q.activeStage = 4;
         }
-    }
+    },
+    {
+        trigger: "goto-outside",
+        ontrigger: function() {
+            Q.stage(5).start();
+            Q.stage().stop();
+            Q.activeStage = 5;
+        }
+    },
 ];
 
 exports.dialogs = new DialogTree(dialogs);

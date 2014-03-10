@@ -172,7 +172,7 @@ DialogTree.prototype.bindDialog = function(trigger, dialog) {
 };
 
 DialogTree.prototype.closeDialog = function() {
-    if (this.currentDialog.responses) {
+    if (this.currentDialog && this.currentDialog.responses) {
         var responses = this.currentDialog.responses;
         for (var i = 0; i < responses.length; i++) {
             if (responses[i].triggerInline) {
@@ -183,6 +183,7 @@ DialogTree.prototype.closeDialog = function() {
     this.currentDialog = null;
     this.ui.showChoices = false;
     this.ui.showDialog = false;
+    console.info(Q.stage());
     Q.stage().unpause();
 };
 
