@@ -146,18 +146,20 @@ exports.scenes = function(Q) {
           });
 
           var player = new Q.Player(stage.width/2, 116);
+          var man = new Q.NPC("Man", -180, 100, "man.png"); 
           var portal_left = new Q.Portal(-stage.width / 2, "pods");
           var portal_right = new Q.Portal(stage.width / 2, "commons");
 
           stage.insert(portal_left);
           stage.insert(portal_right);
-          stage.insert(actionButton);
           stage.insert(bg);
           stage.insert(back_wall);
           stage.insert(front_wall);
+          stage.insert(man);
           stage.insert(player);
           stage.insert(entrance_left);
           stage.insert(entrance_right);
+          stage.insert(actionButton);
      }, {sort: true} );
  
 
