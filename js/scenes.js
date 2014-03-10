@@ -303,9 +303,9 @@ exports.scenes = function(Q) {
 
           var player = new Q.Player(stage.width/2, 116);
           var portal_right = new Q.Portal(stage.width / 2, "pods");
-          //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
+          var portal_left = new Q.Portal(-stage.width / 2, "outside"); 
 
-          //stage.insert(portal_left);
+          stage.insert(portal_left);
           stage.insert(portal_right);
           stage.insert(actionButton);
           stage.insert(bg);
