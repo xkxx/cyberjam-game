@@ -47,6 +47,25 @@ Q.Sprite.extend("Entrance", {
     },
 });
 
+Q.animations('burner', {
+    burn: { frames: [0,1,2,3,4,5], rate: 1/7}
+});
+Q.Sprite.extend("Burner",  {
+    init: function(x, y, frameStart) {
+        this._super({
+            x: x,
+            y: y,
+            z: y,
+            sheet: "burner",
+            sprite: "burner",
+            frame: frameStart,
+            type:0
+        });
+        this.add("animation");
+    },
+    step: function(dt) { this.play("burn"); }
+});
+
 Q.input.on("action", function() {
     if(Q.npcNearby && !dialogs.currentDialog) {
         Q.npcNearby.click();
@@ -59,8 +78,8 @@ Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
 
-Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
-        'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
+Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
+        'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
@@ -71,6 +90,16 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
             w: 192,
             h: 128
         });
+
+    Q.sheet("burner",
+        "burner-sheet.png",
+        {
+            tilew: 20,
+            tileh: 28,
+            w: 120,
+            h: 28
+        });
+
 //  Q.sheet("terminal",
 //      "terminal.png",
 //      {
