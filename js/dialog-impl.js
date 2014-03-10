@@ -23,7 +23,7 @@ var DialogNode = {
             root.removeAllListeners(this.trigger);
         }
         this.trigger = trigger;
-        root.on(trigger, root.triggerDialog.bind(trigger, this));
+        root.on(trigger, this);
     }
 };
 
@@ -45,7 +45,7 @@ var DialogTree = function(list) {
                 item.parent = list;
                 item.root = self;
                 if (item.trigger) {
-                    EventEmitter.prototype.on.call(self, item.trigger, self.triggerDialog.bind(self, item));
+                    self.bindDialog(item.trigger, item);
                 }
                 process(item.responses, item);
             }
@@ -130,6 +130,8 @@ DialogTree.prototype.triggerDialog = function(item) {
         return;
     }
 
+    this.closeDialog();
+
     if(item.ontrigger) {
         item.ontrigger();
     }
@@ -141,31 +143,47 @@ DialogTree.prototype.triggerDialog = function(item) {
 
         if(item.responses) {
             for (var i = 0; i < item.responses.length; i++) {
-                this.ui.choices.push({
-                    content: item.responses[i].triggerText,
-                    selected: false
-                });
+                var response = item.responses[i];
+                if (response.triggerInline) {
+                    this.bindDialog(response.triggerInline, response);
+                }
+                else if (response.triggerText) {
+                    this.ui.choices.push({
+                        content: response.triggerText,
+                        selected: false
+                    });
+                }
             }
             this.ui.kbChoice = 0;
             this.ui.choices[0].selected = true;
             this.ui.showChoices = true;
         }
-        else {
-            this.ui.showChoices = false;
-        }
         this.currentDialog = item;
         this.ui.showDialog = true;
         Q.stage().pause();
     }
-    else {
-        this.closeDialog();
-    }
+};
+
+DialogTree.prototype.bindDialog = function(trigger, dialog) {
+    var self = this;
+    this.on(trigger, function() {
+        self.triggerDialog(dialog);
+    });
 };
 
 DialogTree.prototype.closeDialog = function() {
-    this.ui.showDialog = false;
+    if (this.currentDialog.responses) {
+        var responses = this.currentDialog.responses;
+        for (var i = 0; i < responses.length; i++) {
+            if (responses[i].triggerInline) {
+                this.removeAllListeners(responses[i].triggerInline);
+            }
+        }
+    }
     this.currentDialog = null;
+    this.ui.showChoices = false;
+    this.ui.showDialog = false;
     Q.stage().unpause();
-}
+};
 
 exports.DialogTree = DialogTree;

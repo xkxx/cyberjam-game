@@ -29,7 +29,7 @@ Q.input.keyboardControls({
     SPACE: "action",
     X: "action",
     ENTER: "action",
-    ESC: "action"
+    ESC: "leave"
 });
 
 //the overlay entrance the char walks beneath
@@ -57,6 +57,7 @@ Q.input.on("action", function() {
 
 Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
+Q.input.on('leave', function() {dialogs.emit('leave');});
 
 Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
         'kitchen-scene.png', 'closet-scene.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
@@ -88,7 +89,7 @@ Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-fl
         closetScene.stop();
         terminalScene.stop();
         outsideScene.stop();
-        Q.activeStage = 5;
+        Q.activeStage = 1;
         Q.stage().start();
     }, 100);
 
