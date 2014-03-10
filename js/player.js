@@ -28,11 +28,11 @@ exports.Player = function(Q) {
     });
 
     Q.Sprite.extend("Player", {
-        init: function(x, y) {
+        init: function(x, y, scale) {
             this._super({
                 x: x,
                 y: y,
-                scale: C.PLAYER_SCALE,
+                scale: (scale == undefined) ? C.PLAYER_SCALE : scale,
                 z: y + C.PLAYER_HEIGHT,
                 sheet: "player",
                 sprite: "player",

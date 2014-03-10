@@ -60,7 +60,7 @@ Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
 
 Q.load(['player.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
-        'kitchen-scene.png', 'closet-scene.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
+        'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
     //extend to include all sprites
     //Q.compileSheets("player.png", "player.json");
     Q.sheet("player",
