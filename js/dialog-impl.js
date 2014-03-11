@@ -55,6 +55,7 @@ var DialogTree = function(list) {
     process(list, this);
     this.list = list;
     this.currentDialog = null;
+    this.currentScene = null;
 
     this.ui = new Vue({
         el: "#dialog-ui",
@@ -138,10 +139,7 @@ DialogTree.prototype.triggerDialog = function(item) {
     if (item.emit) {
         this.emit(item.emit);
     }
-    if (item.message) {
-        this.ui.content = item.message;
-
-        if(item.responses) {
+    if(item.responses) {
             for (var i = 0; i < item.responses.length; i++) {
                 var response = item.responses[i];
                 if (response.triggerInline) {
@@ -154,10 +152,20 @@ DialogTree.prototype.triggerDialog = function(item) {
                     });
                 }
             }
-            this.ui.kbChoice = 0;
-            this.ui.choices[0].selected = true;
-            this.ui.showChoices = true;
+            if(this.ui.choices.length > 0) { // there are text-based choices
+                this.ui.kbChoice = 0;
+                this.ui.choices[0].selected = true;
+                this.ui.showChoices = true;
+            }
+    }
+    if (item.isScene) {
+        if (this.currentScene) {
+            this.closeScene();
         }
+        this.currentScene = item;
+    }
+    if (item.message) {
+        this.ui.content = item.message;
         this.currentDialog = item;
         this.ui.showDialog = true;
         Q.stage().pause();
@@ -172,7 +180,9 @@ DialogTree.prototype.bindDialog = function(trigger, dialog) {
 };
 
 DialogTree.prototype.closeDialog = function() {
-    if (this.currentDialog && this.currentDialog.responses) {
+    if (this.currentDialog &&
+        this.currentDialog.responses &&
+        !this.currentDialog.isScene) {
         var responses = this.currentDialog.responses;
         for (var i = 0; i < responses.length; i++) {
             if (responses[i].triggerInline) {
@@ -185,6 +195,18 @@ DialogTree.prototype.closeDialog = function() {
     this.ui.showDialog = false;
     console.info(Q.stage());
     Q.stage().unpause();
+};
+
+DialogTree.prototype.closeScene = function() {
+    if (this.currentScene && this.currentScene.responses) {
+        var responses = this.currentScene.responses;
+        for (var i = 0; i < responses.length; i++) {
+            if (responses[i].triggerInline) {
+                this.removeAllListeners(responses[i].triggerInline);
+            }
+        }
+    }
+    this.currentScene = null;
 };
 
 exports.DialogTree = DialogTree;

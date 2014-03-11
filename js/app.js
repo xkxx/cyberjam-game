@@ -119,6 +119,7 @@ Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-en
         terminalScene.stop();
         outsideScene.stop();
         Q.activeStage = 1;
+        dialogs.emit('day1-start');
         Q.stage().start();
     }, 100);
 

@@ -10,6 +10,10 @@
     // keep in mind that the signal is global, thus the dialog
     // will be activated even if it's inside a nested tree
     trigger: "",
+    // if set to true, the dialog persists after its message is
+    // dismissed. The scene expires when it is closed or when
+    // a new scene is loaded
+    isScene: false,
     // alternatively, if the node is a response candidate,
     // triggerText will be displayed, and activate the dialog
     // if selected
@@ -54,9 +58,13 @@ var NPC1 = {
 
 var DialogTree = require('./dialog-impl').DialogTree;
 
-var dialogs = [
+var day1 = {
+    trigger: 'day1-start',
+    isScene: true,
+    //message: "Here we go",
+    responses: [
     {
-        trigger: "Man-click",
+        triggerInline: "Man-click",
         message: "The coffee here is bad",
         responses: [
             {
@@ -70,30 +78,26 @@ var dialogs = [
         ]
     },
     {
-        trigger: "OldMan-click",
+        triggerInline: "OldMan-click",
         message: "zz..zzz..",
     },
     {
-        trigger: "Chell-click",
+        triggerInline: "Chell-click",
         message: "Hi there",
         emit: "goto-terminal"
     },
     {
-        trigger: "Boy-click",
+        triggerInline: "Boy-click",
         message: "Lalala",
         responses: [
             {
                 triggerText: "What are you playing?",
                 message: "A game."
-            },
-            {
-                triggerText: "Fuck you",
-                message: "You too"
             }
         ]
     },
     {
-        trigger: "Mom-click",
+        triggerInline: "Mom-click",
         message: "I should have had an abortion.",
         responses: [
             {
@@ -106,6 +110,11 @@ var dialogs = [
             }
         ]
     },
+    ] // end of responses
+};
+
+var dialogs = [
+    day1,
     {
         trigger: "goto-commons",
         ontrigger: function() {

@@ -41,7 +41,8 @@ gulp.task('htmlreplace', function() {
     return gulp.src('app.html')
         .pipe(htmlreplace({
             'css': 'app.css',
-            'js': ['vue.min.js', 'quintus.js']
+            'js': ['vue.min.js', 'quintus.js'],
+            'loader': 'app.js'
             }))
         .pipe(gulp.dest('dist/'));
 });
