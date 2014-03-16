@@ -84,6 +84,7 @@ exports.Player = function(Q) {
               Q.npcNearby = nearby.obj;
            } else {
                  this.stage.actionButton.hide();
+                 Q.npcNearby = null;
            }
 
            var x = Math.max( -this.stage.width / 2 + C.VIEW_WIDTH / 2, this.p.x);
