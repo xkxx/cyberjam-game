@@ -72,8 +72,7 @@ var day1 = {
                 message: "It doesn’t matter. It can't be colder than the last place."
             },
             {
-                triggerText: "Option 2",
-                message: "Response 2"
+                triggerText: "...",
             }
         ]
     },
@@ -84,7 +83,7 @@ var day1 = {
     {
         triggerInline: "Chell-click",
         message: "Hi there",
-        emit: "goto-terminal"
+        emit: "goto-terminal",
     },
     {
         triggerInline: "Boy-click",
@@ -93,6 +92,9 @@ var day1 = {
             {
                 triggerText: "What are you playing?",
                 message: "A game."
+            },
+            {
+                triggerText: "...",
             }
         ]
     },

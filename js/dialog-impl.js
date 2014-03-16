@@ -168,7 +168,7 @@ DialogTree.prototype.triggerDialog = function(item) {
         this.ui.content = item.message;
         this.currentDialog = item;
         this.ui.showDialog = true;
-        Q.stage().pause();
+        Q.inDialogue = true;
     }
 };
 
@@ -194,7 +194,8 @@ DialogTree.prototype.closeDialog = function() {
     this.ui.showChoices = false;
     this.ui.showDialog = false;
     console.info(Q.stage());
-    Q.stage().unpause();
+    //flag sets players velocity to 0
+    Q.inDialogue = false;
 };
 
 DialogTree.prototype.closeScene = function() {

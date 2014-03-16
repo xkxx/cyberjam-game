@@ -21,6 +21,14 @@ Q.ctx.mozImageSmoothingEnabled = false;
 Q.gravityY = 0;
 Q.gravityX = 0;
 
+Q.actionUI = new Vue({
+        el: "#action-ui",
+        data: {
+            content: "",
+            showAction: true,
+        }
+});
+
 Q.input.keyboardControls({
     LEFT: "left",
     RIGHT: "right",

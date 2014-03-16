@@ -37,16 +37,28 @@ canvas {
     color: white;
 }
 
-p {
-    display: inline-block;
-    padding: 5px;
-    background-color: #40f;
-    margin-bottom: 5px;
+#action-ui {
+    /*display:block;*/
+    margin-top:220;
+    color:white;
+}
 
+#dialog-ui {
+    height: 282;
+    width: 300;
+    margin: auto;
+    text-align: center;
+}
+
+p {
+    display: block;
+    padding: 5px;
+    background-color: #FFF;
+    color: #000;
 }
 
 ul {
-    display: inline-block;
+    text-align: right;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -55,9 +67,8 @@ ul {
 
 li {
     padding: 4px;
-
 }
 
 li.selected {
-    background: #333;
+    outline: 4px solid;
 }

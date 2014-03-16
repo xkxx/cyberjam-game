@@ -49,6 +49,10 @@ exports.Player = function(Q) {
             this.add("animation");
        },
        step: function(dt) {
+           
+           if (Q.inDialogue) {
+               this.p.vx = this.p.vy = 0;
+           }
 
            this.p.z = this.p.y + C.PLAYER_HEIGHT/2;
 
@@ -76,15 +80,13 @@ exports.Player = function(Q) {
            nearby = nearby || this.stage.search(this.backVision);
 
            if (nearby) {
-              this.stage.actionButton.set({
-                  x: nearby.obj.p.x,
-                  y: nearby.obj.p.y - nearby.obj.p.cy - 40,
-                  hidden: false
-              });
-              Q.npcNearby = nearby.obj;
+               Q.npcNearby = nearby.obj;
+               if (!Q.inDialogue) {
+                  Q.actionUI.content = Q.npcNearby.p.action;
+               }
            } else {
-                 this.stage.actionButton.hide();
-                 Q.npcNearby = null;
+              Q.npcNearby = null;
+              Q.actionUI.content = "";
            }
 
            var x = Math.max( -this.stage.width / 2 + C.VIEW_WIDTH / 2, this.p.x);

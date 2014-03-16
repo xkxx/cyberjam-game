@@ -23,7 +23,6 @@ exports.scenes = function(Q) {
 
 
         var actionButton = new Q.UI.Button({
-            asset: 'action.png',
             x: 0,
             y: 100,
             hidden: true
@@ -62,9 +61,9 @@ exports.scenes = function(Q) {
         });
 
         var player = new Q.Player(0, 116);
-        var boy = new Q.NPC("Boy", -50, 116, "boy.png"); 
-        var oldman = new Q.NPC("OldMan", -150, 100, "oldman-chair.png"); 
-        var terminal = new Q.NPC("Chell", stage.width/2 - 104, 124,"terminal0.png");
+        var boy = new Q.NPC("Boy", -50, 116, "boy.png", "talk to the boy"); 
+        var oldman = new Q.NPC("OldMan", -150, 100, "oldman-chair.png", "nudge old man"); 
+        var terminal = new Q.NPC("Chell", stage.width/2 - 104, 124,"terminal0.png", "login");
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
         stage.insert(portal_left);
@@ -146,7 +145,7 @@ exports.scenes = function(Q) {
           });
 
           var player = new Q.Player(stage.width/2, 116);
-          var man = new Q.NPC("Man", -180, 100, "man.png"); 
+          var man = new Q.NPC("Man", -180, 100, "man.png", "talk to coffee-token"); 
           var portal_left = new Q.Portal(-stage.width / 2, "pods");
           var portal_right = new Q.Portal(stage.width / 2, "commons");
 
