@@ -52,7 +52,11 @@ exports.Player = function(Q) {
            
            if (Q.inDialogue) {
                this.p.vx = this.p.vy = 0;
+               Q.stage().viewport.scale = 2;
+           } else {
+               Q.stage().viewport.scale = 1;
            }
+
 
            this.p.z = this.p.y + C.PLAYER_HEIGHT/2;
 
@@ -96,6 +100,14 @@ exports.Player = function(Q) {
            if (this.stage.viewport == undefined) {
                 console.log("ERROR");
            }
+           if (Q.inDialogue) {
+               x = Q.npcNearby.p.x + (this.p.x - Q.npcNearby.p.x) / 2;
+               y = Q.npcNearby.p.y + (this.p.y - Q.npcNearby.p.y ) / 2;
+               x = Math.max(x, -this.stage.width / 2 + C.VIEW_WIDTH / 4);
+               y -= 30;
+               y = Math.max(y, C.VIEW_HEIGHT/4);
+           }
+
            this.stage.viewport.centerOn(x,y);
        }
      });
