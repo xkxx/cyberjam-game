@@ -91,7 +91,7 @@ Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
 
-Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png', 'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal-sheet.png', 'terminal0.png', 'boy.png' ], function() {
+Q.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png', 'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal-sheet.png', 'boy-sheet.png' ], function() {
 
     Q.sheet("player",
         "player.png",
@@ -101,6 +101,25 @@ Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-en
             w: 192,
             h: 128
         });
+    Q.sheet("boy",
+        "boy-sheet.png",
+        {
+            tilew: 40,
+            tileh: 80,
+            w: 160,
+            h: 80
+        });
+
+    Q.sheet("man",
+        "man-sheet.png",
+        {
+            tilew: 48,
+            tileh: 136,
+            w: 384,
+            h: 136
+        });
+
+
     Q.sheet("terminal-scene",
         "terminal-scene.png",
         {

@@ -60,7 +60,7 @@ exports.scenes = function(Q) {
             type: 0
         });
 
-        Q.animations('terminal', { flicker: { frames: [0,1,2,3,4], rate: 1/10}});
+        Q.animations('terminal', { flicker: { frames: [0,1,2,3,4], rate: 1/5}});
         var terminal = new Q.NPC({ 
             name:"Chell",
             sprite:"terminal",
@@ -73,8 +73,35 @@ exports.scenes = function(Q) {
         terminal.add("animation");
         terminal.play("flicker");
 
+          Q.animations('boy', { 
+              squirm: { frames: [0,1,2,3],loop:false, rate: 1},
+              squirmBack: { frames: [3,2,1,0],loop:false, rate: 1}
+          });
+
+          var boy = new Q.NPC({ 
+              name:"Boy",
+              sprite:"boy",
+              sheet:"boy",
+              x:-50,
+              y:116,
+              z:116,
+              action:"talk to the boy" 
+          });
+
+          boy.add("animation");
+          boy.play("squirm");
+          boy.step = function(dt) {
+              if ((Q.stage().time |0) % 10 == 0) {
+                  if (boy.p.frame == 0) {
+                      boy.play("squirm") 
+                  } else if (boy.p.frame == 3) {
+                      boy.play("squirmBack");
+                  }
+              }
+          };
+
+
         var player = new Q.Player(0, 116);
-        var boy = new Q.NPC({ name:"Boy",x:-50,y:116,z:116,asset:"boy.png",action:"talk to the boy" }); 
         var oldman = new Q.NPC({ name:"OldMan",x:-150,y:100,z:100,asset:"oldman-chair.png",action:"nudge old man" }); 
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
@@ -156,8 +183,31 @@ exports.scenes = function(Q) {
               type: 0
           });
 
+
+          Q.animations('man', { 
+              drink: { frames: [0,1,2,3,3,3,2,1,0],loop:false, rate: 1/5},
+              handSlide: { frames: [4,5,6,7,6,5,4],loop:false, rate: 1/3}
+          });
+
+          var man = new Q.NPC({ 
+              name:"Man",
+              sprite:"man",
+              sheet:"man",
+              x:-180,
+              y:100,
+              z:100,
+              action:"talk to coffee-token" 
+          });
+          man.add("animation");
+          man.play("handSlide");
+          man.step = function(dt) {
+              if ((Q.stage().time |0) % 5 == 0 && (man.p.frame == 0 || man.p.frame == 4)) {
+                  (Math.round(Math.random()) == 1) ? man.play("drink") : man.play("handSlide");
+              }
+          };
+
+
           var player = new Q.Player(stage.width/2, 116);
-          var man = new Q.NPC({ name:"Man",x:-180,y:100,z:100,asset:"man.png",action:"talk to coffee-token" }); 
           var portal_left = new Q.Portal(-stage.width / 2, "pods");
           var portal_right = new Q.Portal(stage.width / 2, "commons");
 
