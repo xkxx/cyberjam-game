@@ -143,17 +143,17 @@ var dialogs = [
     {
         trigger: "goto-commons",
         ontrigger: function() {
-            Q.stage(1).start();
+            Q.stage(5).start();
             Q.stage().stop();
-            Q.activeStage = 1;
+            Q.activeStage = 5;
         }
     },
     {
         trigger: "goto-kitchen",
         ontrigger: function() {
-            Q.stage(0).start();
+            Q.stage(3).start();
             Q.stage().stop();
-            Q.activeStage = 0;
+            Q.activeStage = 3;
         }
     },
     {
@@ -167,9 +167,9 @@ var dialogs = [
     {
         trigger: "goto-closet",
         ontrigger: function() {
-            Q.stage(3).start();
+            Q.stage(1).start();
             Q.stage().stop();
-            Q.activeStage = 3;
+            Q.activeStage = 1;
         }
     },
     {
@@ -185,9 +185,9 @@ var dialogs = [
     {
         trigger: "goto-outside",
         ontrigger: function() {
-            Q.stage(5).start();
+            Q.stage(0).start();
             Q.stage().stop();
-            Q.activeStage = 5;
+            Q.activeStage = 0;
         }
     },
 ];

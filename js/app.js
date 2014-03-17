@@ -147,12 +147,13 @@ Q.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'w
             h: 28
         });
 
-    var kitchenScene = Q.stageScene("kitchen", 0);
-    var commonsScene = Q.stageScene("commons", 1);
-    var podsScene = Q.stageScene("pods", 2);
-    var closetScene = Q.stageScene("closet", 3);
+    Q.activeStage = 5;
+    var commonsScene = Q.stageScene("commons", 5);  
     var terminalScene = Q.stageScene("terminal", 4);
-    var outsideScene = Q.stageScene("outside", 5);
+    var kitchenScene = Q.stageScene("kitchen", 3);
+    var podsScene = Q.stageScene("pods", 2);
+    var closetScene = Q.stageScene("closet", 1);
+    var outsideScene = Q.stageScene("outside", 0);
 
     setTimeout(function(){
         kitchenScene.stop();
@@ -160,12 +161,25 @@ Q.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'w
         closetScene.stop();
         terminalScene.stop();
         outsideScene.stop();
-        Q.activeStage = 1;
         dialogs.emit('day1-start');
-        Q.stage().start();
     }, 100);
 
+
+    //Q.day(1).day(2).day(3).day(4);
+
 });
+
+//Q.day = function(day) {
+//    //stage all day scenes
+//    //display load stage
+//    //set timeout
+//    //
+//    //var scenes = Q.days[day] //scenes is an array
+//    //for (var i = 0; i < scenes.length; i++) {
+//    //   Q.stageScene(scenes[i], i);
+//    //}
+//    //
+//}
 
 window.Q = Q;
 exports.Q = Q;
