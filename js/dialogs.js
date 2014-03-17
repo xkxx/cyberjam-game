@@ -84,6 +84,29 @@ var day1 = {
         triggerInline: "Chell-click",
         message: "Hi there",
         emit: "goto-terminal",
+        responses: [
+            {  triggerText: "logs",
+                message: "Insufficient priveleges",
+                responses: [{
+                    triggerText: "back",
+                    emit: "Chell-click"
+                }]
+            },
+            {
+                triggerText: "about",
+                message: "This is your captain, android make YR2088 specialized in human management, etc. Sleeping pods by ID, allow the passenger to utilize Hyper v.9.8 the interface between the ship’s network and the greater outer-verse. Mail is the primary means of communication between passengers and the captain. Emergencies/notifications will appear upon login. At the front of the shuttle, you can directly interact with me. Welcome aboard.",
+                responses: [ 
+                    {
+                        triggerText: "back",
+                        emit: "Chell-click"
+                    }
+                ]
+            },
+            { 
+                triggerText: "...",
+                emit: "goto-commons"
+            }
+         ]
     },
     {
         triggerInline: "Boy-click",
@@ -152,9 +175,11 @@ var dialogs = [
     {
         trigger: "goto-terminal",
         ontrigger: function() {
+            if (Q.activeStage != 4) {
             Q.stage(4).start();
             Q.stage().stop();
             Q.activeStage = 4;
+            }
         }
     },
     {

@@ -55,6 +55,10 @@ Q.Sprite.extend("Entrance", {
     },
 });
 
+Q.animations('terminal-scene', {
+    flicker: { frames: [0,1], rate: 1/5}
+});
+
 Q.animations('burner', {
     burn: { frames: [0,1,2,3,4,5], rate: 1/7}
 });
@@ -97,6 +101,14 @@ Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-en
             tileh: 128,
             w: 192,
             h: 128
+        });
+    Q.sheet("terminal-scene",
+        "terminal-scene.png",
+        {
+            tilew: 700,
+            tileh: 232,
+            w: 1400,
+            h: 232
         });
 
     Q.sheet("burner",

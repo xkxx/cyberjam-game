@@ -329,24 +329,32 @@ exports.scenes = function(Q) {
               Q.npcNearby.click();
           });
           stage.actionButton = actionButton;
-  
+
           // bg
-          var bg = new Q.Sprite({
-              x: stage.width / 2,
-              y: stage.height / 2, 
-              z: 0,
-              h: stage.height,
-              w: stage.width,
-              asset: 'terminal-scene.png',
-              type: 0 // !!important! You MUST specify Sprite type
+          Q.Sprite.extend("Terminal", {
+             init: function() {
+                this._super({
+                      x: stage.width / 2,
+                      y: stage.height / 2, 
+                      z: 0,
+                      h: stage.height,
+                      w: stage.width,
+                      sheet: 'terminal-scene',
+                      sprite: 'terminal-scene',
+                      frame: 0,
+                      type: 0 // !!important! You MUST specify Sprite type
+                });
+                this.add("animation"); 
+              },
+              step: function(dt) {this.play("flicker");}
           });
-            
+
           var portal_right = new Q.Portal(stage.width / 2, "pods");
           //var portal_left = new Q.Portal(-stage.width / 2, "commons", player); NEEDS TO LEAD TOP OF SHIP
 
           //stage.insert(portal_left);
           stage.insert(portal_right);
-          stage.insert(bg);
+          stage.insert(new Q.Terminal());
           stage.insert(actionButton);
     }, {sort: true});
 
