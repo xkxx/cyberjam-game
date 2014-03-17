@@ -60,10 +60,22 @@ exports.scenes = function(Q) {
             type: 0
         });
 
+        Q.animations('terminal', { flicker: { frames: [0,1,2,3,4], rate: 1/10}});
+        var terminal = new Q.NPC({ 
+            name:"Chell",
+            sprite:"terminal",
+            sheet:"terminal",
+            x:stage.width/2 - 104,
+            y:124,
+            z:124,
+            action:"login" 
+        });
+        terminal.add("animation");
+        terminal.play("flicker");
+
         var player = new Q.Player(0, 116);
-        var boy = new Q.NPC("Boy", -50, 116, "boy.png", "talk to the boy"); 
-        var oldman = new Q.NPC("OldMan", -150, 100, "oldman-chair.png", "nudge old man"); 
-        var terminal = new Q.NPC("Chell", stage.width/2 - 104, 124,"terminal0.png", "login");
+        var boy = new Q.NPC({ name:"Boy",x:-50,y:116,z:116,asset:"boy.png",action:"talk to the boy" }); 
+        var oldman = new Q.NPC({ name:"OldMan",x:-150,y:100,z:100,asset:"oldman-chair.png",action:"nudge old man" }); 
         var portal_left = new Q.Portal(-stage.width / 2, "kitchen");
 
         stage.insert(portal_left);
@@ -145,7 +157,7 @@ exports.scenes = function(Q) {
           });
 
           var player = new Q.Player(stage.width/2, 116);
-          var man = new Q.NPC("Man", -180, 100, "man.png", "talk to coffee-token"); 
+          var man = new Q.NPC({ name:"Man",x:-180,y:100,z:100,asset:"man.png",action:"talk to coffee-token" }); 
           var portal_left = new Q.Portal(-stage.width / 2, "pods");
           var portal_right = new Q.Portal(stage.width / 2, "commons");
 

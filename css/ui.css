@@ -21,14 +21,14 @@ body {
 #gameCanvas_container, .wrapper {
     position: absolute;
     width:700px;
-    height:350px;
+    height:232px;
     top: 50%;
     left: 50%;
     margin: -175px 0 0 -350px;
 }
 
 canvas {
-    margin-top: 50px;
+    margin-top: 32px;
     background: #DDD;
 }
 
@@ -44,7 +44,7 @@ canvas {
 }
 
 #dialog-ui {
-    height: 282;
+    height: 264;
     width: 300;
     margin: auto;
     text-align: center;
@@ -62,13 +62,13 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #000;
 }
 
 li {
-    padding: 4px;
+    padding: 0px;
 }
 
 li.selected {
-    outline: 4px solid;
+    padding-right:2px;
+    border-right: 2px solid;
 }

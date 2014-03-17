@@ -62,6 +62,7 @@ Q.animations('terminal-scene', {
 Q.animations('burner', {
     burn: { frames: [0,1,2,3,4,5], rate: 1/7}
 });
+
 Q.Sprite.extend("Burner",  {
     init: function(x, y, frameStart) {
         this._super({
@@ -90,10 +91,8 @@ Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
 
-Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png',
-        'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal0.png', 'boy.png' ], function() {
-    //extend to include all sprites
-    //Q.compileSheets("player.png", "player.json");
+Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png', 'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal-sheet.png', 'terminal0.png', 'boy.png' ], function() {
+
     Q.sheet("player",
         "player.png",
         {
@@ -111,6 +110,15 @@ Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-en
             h: 232
         });
 
+    Q.sheet("terminal",
+        "terminal-sheet.png",
+        {
+            tilew: 96,
+            tileh: 144,
+            w: 480,
+            h: 144
+        });
+
     Q.sheet("burner",
         "burner-sheet.png",
         {
@@ -119,11 +127,6 @@ Q.load(['player.png','man.png','oldman-chair.png', 'commons-scene.png', 'wall-en
             w: 120,
             h: 28
         });
-
-//  Q.sheet("terminal",
-//      "terminal.png",
-//      {
-//      });
 
     var kitchenScene = Q.stageScene("kitchen", 0);
     var commonsScene = Q.stageScene("commons", 1);
