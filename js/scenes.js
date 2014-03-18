@@ -244,7 +244,7 @@ var sceneMap = [];
      }
 
     var podsEmpty = function(stage) {
-              stage.width = 700;
+              stage.width = 1840;
               stage.height = 232;
               stage.add("viewport");
 
@@ -257,7 +257,7 @@ var sceneMap = [];
                   Q.npcNearby.click();
               });
               stage.actionButton = actionButton;
-      
+  
               // bg
               var bg = new Q.Sprite({
                   x: 0,
@@ -265,10 +265,10 @@ var sceneMap = [];
                   z: 0,
                   h: stage.height,
                   w: stage.width,
-                  asset: 'closet-scene.png',
+                  asset: 'sleeping-scene.png',
                   type: 0 // !!important! You MUST specify Sprite type
               });
-      
+  
               // back wall
               var back_wall = new Q.Sprite({
                   x: 0,
@@ -277,7 +277,7 @@ var sceneMap = [];
                   w: stage.width,
                   type: C.SPRITE_BLOCKER
               });
-      
+  
               // front wall
               var front_wall = new Q.Sprite({
                   x: 0,
@@ -286,7 +286,7 @@ var sceneMap = [];
                   w: stage.width,
                   type: C.SPRITE_BLOCKER
               });
-      
+  
               // entrance right
               var entrance_right = new Q.Sprite({
                   x: stage.width / 2 - 112 / 2,
@@ -297,10 +297,20 @@ var sceneMap = [];
                   asset: "wall-entrance.png",
                   type: 0
               });
-      
+  
+              // entrance left
+              var entrance_left = new Q.Sprite({
+                  x: -stage.width / 2 + 112 / 2 + 32,
+                  y: stage.height / 2,
+                  z: stage.height,
+                  w: 112,
+                  h: 232, 
+                  asset: "wall-entrance.png",
+                  type: 0
+              });
 
-              var portal_right = new Q.Portal(stage.width / 2, "pods");
-              var portal_left = new Q.Portal(-stage.width / 2, "outside"); 
+              var portal_left = new Q.Portal(-stage.width / 2, "closet");
+              var portal_right = new Q.Portal(stage.width / 2, "kitchen");
 
               stage.insert(portal_left);
               stage.insert(portal_right);
@@ -308,6 +318,7 @@ var sceneMap = [];
               stage.insert(bg);
               stage.insert(back_wall);
               stage.insert(front_wall);
+              stage.insert(entrance_left);
               stage.insert(entrance_right);
               return stage;
     }
