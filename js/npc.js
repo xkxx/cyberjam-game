@@ -8,6 +8,7 @@ exports.NPC = function(Q) {
                 type: C.SPRITE_NP,
                 collisionMask: C.SPRITE_BLOCKER,
             });
+            this.add("animation");
         },
         click: function() {
             Q.actionUI.content = "";

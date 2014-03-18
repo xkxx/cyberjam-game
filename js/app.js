@@ -147,39 +147,40 @@ Q.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'w
             h: 28
         });
 
-    Q.activeStage = 5;
-    var commonsScene = Q.stageScene("commons", 5);  
-    var terminalScene = Q.stageScene("terminal", 4);
-    var kitchenScene = Q.stageScene("kitchen", 3);
-    var podsScene = Q.stageScene("pods", 2);
-    var closetScene = Q.stageScene("closet", 1);
-    var outsideScene = Q.stageScene("outside", 0);
-
-    setTimeout(function(){
-        kitchenScene.stop();
-        podsScene.stop();
-        closetScene.stop();
-        terminalScene.stop();
-        outsideScene.stop();
-        dialogs.emit('day1-start');
-    }, 100);
-
-
-    //Q.day(1).day(2).day(3).day(4);
-
+    Q.day(0);
 });
 
-//Q.day = function(day) {
-//    //stage all day scenes
-//    //display load stage
-//    //set timeout
-//    //
-//    //var scenes = Q.days[day] //scenes is an array
-//    //for (var i = 0; i < scenes.length; i++) {
-//    //   Q.stageScene(scenes[i], i);
-//    //}
-//    //
-//}
+Q.day = function(day) {
+
+    //array of room objs
+    //room: {
+    //     name: "commons"
+    //     fun: function (stage) {}
+    //     scene: the scene created from its stage fun
+    //}
+   
+    var room;
+    var rooms = Q.sceneMap[day];
+    var numRooms = rooms.length;
+    var index;
+    Q.activeStage = numRooms - 1;
+    for (var i = 0; i < numRooms; i++) {
+        room = rooms[i];
+        Q.scene(room.name, room.fun, {sort: true});
+        index = numRooms - 1 - i;
+        //console.log("room: " + room.name + ", stage: " + index);
+        room.scene = Q.stageScene(room.name, index); //larger index corresponds to earlier
+    }
+    setTimeout(function() {
+        for (var i = 1; i < numRooms; i++) {
+            room = rooms[i];
+            room.scene.stop();
+
+        console.log("room: " + room.name + ", stage: " + index);
+        }
+        dialogs.emit('day' + (day + 1) + '-start');
+    }, 100);
+}
 
 window.Q = Q;
 exports.Q = Q;

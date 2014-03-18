@@ -193,7 +193,7 @@ DialogTree.prototype.closeDialog = function() {
     this.currentDialog = null;
     this.ui.showChoices = false;
     this.ui.showDialog = false;
-    console.info(Q.stage());
+    //console.info(Q.stage());
     //flag sets players velocity to 0
     Q.inDialogue = false;
 };
