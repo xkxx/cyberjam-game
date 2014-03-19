@@ -6,17 +6,19 @@ var C = require('./constants').Constants,
     Portal = require('./portal').Portal,
     scenes = require('./scenes').scenes;
 
-Crafty.init(700,232);
-Crafty.canvas.init();
-Crafty.canvas._canvas.id = "gameCanvas";
-Crafty.stage.elem.style.overflow = "initial";
-Crafty.stage.elem.style.position = "absolute";
-
 var Q = Quintus({ development: true, imagePath: "assets/"})
     .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
     .include([Isometric, Player, NPC, Portal, scenes])
     .controls(true)
     .touch();
+
+Crafty.init(700,232);
+Crafty.canvas.init();
+Crafty.canvas._canvas.id = "gameCanvas";
+Crafty.stage.elem.style.overflow = "initial";
+Crafty.stage.elem.style.position = "absolute";
+Crafty.pixelart(true);
+
 
 //When uncommented wierd artifacts appear in animation
 Q.ctx.imageSmoothingEnabled = false;
@@ -95,6 +97,11 @@ Q.input.on("action", function() {
 Q.input.on('up', function() {dialogs.ui.kbUp();});
 Q.input.on('down', function() {dialogs.ui.kbDown();});
 Q.input.on('leave', function() {dialogs.emit('leave');});
+
+Crafty.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png', 'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal-sheet.png', 'boy-sheet.png' ],
+       function() { 
+           //Crafty.scene("Commons");
+       });
 
 Q.load(['player.png','man-sheet.png','oldman-chair.png', 'commons-scene.png', 'wall-entrance.png','wall-entrance-flip.png', 'npc.png', 'action.png', 'ladder.png', 'kitchen-scene.png', 'closet-scene.png', 'outside-scene.png', 'burner-sheet.png', 'sleeping-scene.png', 'terminal-scene.png', 'terminal-sheet.png', 'boy-sheet.png' ], function() {
 
