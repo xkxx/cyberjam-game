@@ -10,6 +10,7 @@
     <!-- build:js -->
     <script src="js/vue.js"></script>
     <script src="js/require.js"></script>
+    <script src='js/crafty.js'></script>
     <script src='js/quintus.js'></script>
     <script src='js/quintus_sprites.js'></script>
     <script src='js/quintus_scenes.js'></script>
@@ -22,17 +23,18 @@
 
   </head>
   <body>
-      <canvas id="gameCanvas" width="700" height="232"></canvas>
-      <div class="wrapper">
-          <div id="dialog-ui">
-              <p v-text="content" v-show="showDialog" v-on="click: dismiss"></p>
-              <ul v-show="showChoices">
-                  <li v-repeat="choices" v-text="content"
-                  v-on="click: selectChoice(this.content)" v-class="selected: selected"></li>
-              </ul>
-          </div>
+      <div id="cr-stage">
+          <div class="wrapper">
+              <div id="dialog-ui">
+                  <p v-text="content" v-show="showDialog" v-on="click: dismiss"></p>
+                  <ul v-show="showChoices">
+                      <li v-repeat="choices" v-text="content"
+                      v-on="click: selectChoice(this.content)" v-class="selected: selected"></li>
+                  </ul>
+              </div>
 
-        <span id="action-ui" v-text="content" v-show="showAction"></span>
+            <span id="action-ui" v-text="content" v-show="showAction"></span>
+          </div>
       </div>
       <!-- build:loader -->
       <script>

@@ -6,10 +6,14 @@ var C = require('./constants').Constants,
     Portal = require('./portal').Portal,
     scenes = require('./scenes').scenes;
 
+Crafty.init(700,232);
+Crafty.canvas.init();
+Crafty.canvas._canvas.id = "gameCanvas";
+Crafty.stage.elem.style.position = "absolute";
+
 var Q = Quintus({ development: true, imagePath: "assets/"})
     .include("Sprites, Scenes, Input, 2D, Anim, Touch, UI")
     .include([Isometric, Player, NPC, Portal, scenes])
-    .setup('gameCanvas')
     .controls(true)
     .touch();
 
