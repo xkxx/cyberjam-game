@@ -9,6 +9,7 @@ var C = require('./constants').Constants,
 Crafty.init(700,232);
 Crafty.canvas.init();
 Crafty.canvas._canvas.id = "gameCanvas";
+Crafty.stage.elem.style.overflow = "initial";
 Crafty.stage.elem.style.position = "absolute";
 
 var Q = Quintus({ development: true, imagePath: "assets/"})
