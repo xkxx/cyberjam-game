@@ -175,11 +175,9 @@ var dialogs = [
     {
         trigger: "goto-terminal",
         ontrigger: function() {
-            if (Q.activeStage != 4) {
             Q.stage(4).start();
             Q.stage().stop();
             Q.activeStage = 4;
-            }
         }
     },
     {
