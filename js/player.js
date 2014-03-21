@@ -1,6 +1,6 @@
 var C = require('./constants').Constants;
 
-exports.Player = function(Q) {
+exports.Player = function() {
     var Vision = function(range) {
         var Vision = {
             p: {

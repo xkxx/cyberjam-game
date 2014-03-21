@@ -2,7 +2,7 @@ exports.scenes = function() {
     Crafty.defineScene('loading', function() {
         Crafty.background("#000");
         var loading = Crafty.e("2D, DOM, Text, Persist")
-                            .attr({ w: 200, h: 20, x: 0, y: 264 })
+                            .attr({ w: 200, h: 20, x: 0, y: 232 })
                             .text("Loading")
                             .textColor("#FFFFFF")
                             .textFont({"family": 'pixel',
@@ -16,7 +16,7 @@ exports.scenes = function() {
                      'assets/wall-entrance.png','assets/wall-entrance-flip.png','assets/ladder.png', 
                      'assets/kitchen-scene.png', 'assets/closet-scene.png', 'assets/outside-scene.png', 
                      'assets/burner-sheet.png', 'assets/sleeping-scene.png', 'assets/terminal-scene.png',
-                     'assets/intro-scene.png', 'assets/intro-train.png'
+                     'assets/intro-scene.png', 'assets/intro-train.png', 'assets/bottom-burner-sheet.png'
                     ],
                     function() { //after load
                         Crafty.enterScene("intro");
@@ -38,9 +38,21 @@ exports.scenes = function() {
         Crafty.stage.elem.style['-moz-animation'] = 'animatedBackground 3s linear infinite';
         Crafty.stage.elem.style['animation'] = 'animatedBackground 3s linear infinite';
  
-        var train = Crafty.e("2D, DOM, Image")
-                     .attr({w: 496, h: 84, x: 0, y: 120})
+
+
+
+        //tiles are 24x16
+        Crafty.sprite(24, 16, "assets/bottom-burner-sheet.png", { BottomBurner: [0,0] });
+        for (var i = 0; i < 7; i++) {
+            Crafty.e("2D, Canvas, SpriteAnimation, BottomBurner").reel('Burning', 1000/2, 0, 0, 4)
+                           .animate('Burning', -1)
+                           .attr({x:-12 + 18 * 4 * i, y:152, z:1});
+        }
+
+        var train = Crafty.e("2D, Canvas, Image")
+                     .attr({w: 496, h: 84, x: 0, y: 100})
                      .image("assets/intro-train.png");
+
 
     });
 
