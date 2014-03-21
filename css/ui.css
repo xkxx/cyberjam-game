@@ -20,6 +20,7 @@ body {
 
 #cr-stage {
     position: absolute;
+    width: 700px;
     top: 50%;
     left: 50%;
     margin: -175px 0 0 -350px;
@@ -29,8 +30,21 @@ canvas {
     width:700px;
     height:232px;
     margin-top: 32px;
-    background: #DDD;
 }
+
+@-webkit-keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+@-moz-keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
 
 .wrapper {
     text-align: center;
