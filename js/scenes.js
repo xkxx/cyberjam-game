@@ -19,7 +19,9 @@ exports.scenes = function() {
                      'assets/intro-scene.png', 'assets/intro-train.png', 'assets/bottom-burner-sheet.png'
                     ],
                     function() { //after load
-                        Crafty.enterScene("intro");
+                        //generate sprite components from sheets
+                        Crafty.sprite(64, 128, "assets/player.png", { Player: [0,0] });
+                        Crafty.enterScene("commons");
                     },
                     function(assets) {//during load
                         loading.text("loaded: " + assets.loaded + "/" + assets.total + " objects");
@@ -56,7 +58,15 @@ exports.scenes = function() {
 
     });
 
-//var sceneMap = [];
+
+    Crafty.defineScene('commons', function() {
+        var bg = Crafty.e("2D, Canvas, Image")
+                     .attr({w: 1288, h: 232, x: 0, y: 0})
+                     .image("assets/commons-scene.png");
+        var player = Crafty.e("John");
+
+    });
+
 //    // CREATE ALL ANIMATIONS
 //    // ^^^^^^^^^^^^^^^^^^^^^
 //    Q.animations('terminal', 
