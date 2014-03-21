@@ -1,7 +1,7 @@
 var C = require('./constants').Constants,
     dialogs = require('./dialogs').dialogs,
     player = require('./player').player(),
- /* components = require('./components').components(); */
+    components = require('./components').components(),
     scenes = require('./scenes').scenes();
 
 //

@@ -24,17 +24,12 @@ exports.components = function() {
         }
     });
 
-    Crafty.c('Player', {
+    Crafty.c('Bounds', { 
         init: function() {
-            this.requires('2D, Canvas, Sprite, Fourway, Collision')
-                .fourway(1);
-
-        }),
-        player: 
-        function(p) {
-
+            this.requires('2D, Color, Canvas, Collision' /* add component for interaction */)
+                .color("rgb(0,0,34)");
         }
-    }
+    });
 
 //              x: x,
 //              y: y,

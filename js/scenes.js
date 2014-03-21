@@ -63,7 +63,10 @@ exports.scenes = function() {
         var bg = Crafty.e("2D, Canvas, Image")
                      .attr({w: 1288, h: 232, x: 0, y: 0})
                      .image("assets/commons-scene.png");
+        var boundTop = Crafty.e("Bounds").attr({ x:0, y:50, w:1288, h:1 });
+//        var boundBottom = Crafty.e("Bounds").attr({ x:0, y:200, w:1288, h:1 });
         var player = Crafty.e("John");
+        Crafty.viewport.follow(player);
 
     });
 

@@ -4,9 +4,16 @@ exports.player = function() {
 
     Crafty.c('John', {
         init: function() { 
-            this.requires('2D, Canvas, SpriteAnimation, Fourway, Player')
+            this.requires('2D, Canvas, SpriteAnimation, Fourway, Collision, Player')
                 .attr({x:64, y:100, z:10})
                 .fourway(5)
+                .onHit("Bounds", function(data) {
+                    data = data[0];
+                    console.log("HIT");
+                    var dx = data.overlap * data.normal.x;
+                    var dy = data.overlap * data.normal.y
+                    this.shift(-dx, -dy);
+                })
                 .reel('walk', 1000/4, 0, 0, 3)
                 .reel('stand', 1000, 0, 0, 1)
                 .animate('stand', -1);
